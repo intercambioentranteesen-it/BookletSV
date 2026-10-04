@@ -22,7 +22,7 @@ export function Photo({ src, alt, accent, shape, className }: PhotoProps) {
   }
   return (
     <div aria-hidden="true" className={cn("relative h-full w-full overflow-hidden", ACCENT[accent].bg, className)}>
-      <ShapeGlyph kind={shape} className="absolute -bottom-[18%] -right-[8%] h-[85%] w-[85%] text-white/35" />
+      <ShapeGlyph kind={shape} className={cn("absolute -bottom-[18%] -right-[8%] h-[85%] w-[85%]", ACCENT[accent].shape)} />
     </div>
   );
 }

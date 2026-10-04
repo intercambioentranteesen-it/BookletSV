@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Lato } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { SkipLink } from "@/components/layout/Header";
 import "./globals.css";
 
-// Lato: tipografía oficial de la marca. Light y Black dan el contraste de peso del diseño.
-const lato = Lato({
+// Poppins: tipografía sugerida en el brandboard del comité (gratuita y libre).
+// Si el comité confirma otra familia para títulos, se agrega aquí como segunda fuente.
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
-  style: ["normal", "italic"],
-  variable: "--font-lato",
+  weight: ["300", "400", "600", "700", "800"],
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={lato.variable}>
+    <html lang="en" className={poppins.variable}>
       <body>
         <Providers>
           <SkipLink />

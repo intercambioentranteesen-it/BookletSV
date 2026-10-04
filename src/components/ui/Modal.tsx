@@ -93,7 +93,7 @@ export function Modal({ open, onClose, labelledBy, children }: ModalProps) {
             aria-modal="true"
             aria-labelledby={labelledBy}
             tabIndex={-1}
-            className="relative max-h-[92dvh] w-full overflow-y-auto overscroll-contain rounded-t-card bg-white outline-none sm:max-h-[88vh] sm:max-w-4xl sm:rounded-card"
+            className="relative max-h-[92dvh] w-full overflow-y-auto overscroll-contain rounded-t-card bg-parchment outline-none sm:max-h-[88vh] sm:max-w-4xl sm:rounded-card"
             initial={{ opacity: 0, transform: "translateY(32px)" }}
             animate={{ opacity: 1, transform: "translateY(0px)", transition: { duration: 0.26, ease: EASE_OUT } }}
             exit={{ opacity: 0, transform: "translateY(16px)", transition: { duration: 0.16 } }}

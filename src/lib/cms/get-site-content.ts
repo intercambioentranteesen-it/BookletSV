@@ -1,6 +1,8 @@
 import { costMock } from "@/data/mock/cost-of-living";
 import { experiencesMock, zonesMock } from "@/data/mock/explore";
+import { flavorsMock } from "@/data/mock/flavors";
 import { goalsMock } from "@/data/mock/goals";
+import { quickFactsMock } from "@/data/mock/quick-facts";
 import { closingMock, heroMock, journeyMock } from "@/data/mock/site";
 import type { L, SiteContent } from "@/types/content";
 
@@ -13,6 +15,7 @@ const l = (en: string, es: string): L => ({ en, es });
 export async function getSiteContent(): Promise<SiteContent> {
   return {
     hero: heroMock,
+    quickFacts: quickFactsMock,
     explore: {
       title: l("Explore El Salvador", "Explora El Salvador"),
       intro: l(
@@ -22,6 +25,7 @@ export async function getSiteContent(): Promise<SiteContent> {
       zones: zonesMock,
       experiences: experiencesMock,
     },
+    flavors: flavorsMock,
     cost: costMock,
     journey: journeyMock,
     goals: goalsMock,

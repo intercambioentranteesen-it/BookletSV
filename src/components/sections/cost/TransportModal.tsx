@@ -55,7 +55,7 @@ export function TransportModal({ open, onClose, content }: TransportModalProps) 
     <Modal open={open} onClose={onClose} labelledBy="transport-title">
       <article className="p-6 sm:p-8">
         <div className="flex items-start justify-between gap-4">
-          <h2 id="transport-title" className="text-4xl font-black leading-tight sm:text-5xl">
+          <h2 id="transport-title" className="text-4xl font-extrabold leading-tight sm:text-5xl">
             {t(content.title)}
           </h2>
           <button
@@ -63,7 +63,7 @@ export function TransportModal({ open, onClose, content }: TransportModalProps) 
             data-autofocus
             onClick={onClose}
             aria-label={t(UI.close)}
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-mist text-ink transition-colors duration-150 hover:bg-ink hover:text-white"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-sand text-ink transition-colors duration-150 hover:bg-ink hover:text-white"
           >
             <X aria-hidden="true" className="h-5 w-5" />
           </button>
@@ -94,15 +94,15 @@ export function TransportModal({ open, onClose, content }: TransportModalProps) 
                 <li key={tier.id} className="py-4">
                   <div className="flex items-baseline justify-between gap-4">
                     <div>
-                      <p className="text-lg font-black">{t(tier.label)}</p>
+                      <p className="text-lg font-extrabold">{t(tier.label)}</p>
                       {tier.detail && <p className="text-sm text-graphite">{t(tier.detail)}</p>}
                     </div>
-                    <p className="shrink-0 bg-white pl-2 text-lg font-black tabular-nums">
+                    <p className="shrink-0 bg-white pl-2 text-lg font-extrabold tabular-nums">
                       {rangeText(tier)}
                       {tier.openEnded && <span className="block text-right text-sm font-normal text-graphite">{t(UI.moreWithDistance)}</span>}
                     </p>
                   </div>
-                  <div aria-hidden="true" className="relative mt-3 h-3 rounded-full bg-mist">
+                  <div aria-hidden="true" className="relative mt-3 h-3 rounded-full bg-sand">
                     <Bar tier={tier} scaleMax={content.scaleMax} index={i} />
                   </div>
                 </li>
@@ -113,17 +113,17 @@ export function TransportModal({ open, onClose, content }: TransportModalProps) 
 
         <div className="mt-6 grid gap-6 border-t-2 border-ink pt-6 md:grid-cols-2">
           <div>
-            <h3 className="text-lg font-black">{t(content.examplesTitle)}</h3>
+            <h3 className="text-lg font-extrabold">{t(content.examplesTitle)}</h3>
             <ul role="list" className="mt-3 space-y-2">
               {content.examples.map((ex) => (
                 <li key={ex.label.en} className="flex items-baseline justify-between gap-4">
                   <span>{t(ex.label)}</span>
-                  <span className="shrink-0 font-black tabular-nums">{t(ex.value)}</span>
+                  <span className="shrink-0 font-extrabold tabular-nums">{t(ex.value)}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <p className="self-end border-l-4 border-ink bg-mist p-3 text-sm leading-relaxed">{t(content.note)}</p>
+          <p className="self-end border-l-4 border-ink bg-sand p-3 text-sm leading-relaxed">{t(content.note)}</p>
         </div>
         <p className="mt-6 text-sm text-graphite">{t(UI.confirm)}</p>
       </article>

@@ -27,7 +27,7 @@ export const journeyMock: JourneyContent = {
       id: "airport",
       icon: "plane",
       shape: "triangle",
-      accent: "blue",
+      accent: "terra",
       title: l("Airport pick-up", "Recibimiento en el aeropuerto"),
       text: l(
         "We can meet you at Comalapa airport (SAL) so your arrival is calm.",
@@ -38,7 +38,7 @@ export const journeyMock: JourneyContent = {
       id: "host",
       icon: "home",
       shape: "rect",
-      accent: "mint",
+      accent: "copper",
       title: l("Host family", "Familia anfitriona"),
       text: l(
         "Cultural immersion: live with a local family and see the country from the inside.",
@@ -49,7 +49,7 @@ export const journeyMock: JourneyContent = {
       id: "buddy",
       icon: "buddy",
       shape: "circle",
-      accent: "tangerine",
+      accent: "charcoal",
       title: l("Buddy system", "Sistema de buddy"),
       text: l(
         "Local support: a buddy who guides you and helps you feel at home.",
@@ -60,12 +60,50 @@ export const journeyMock: JourneyContent = {
       id: "first-day",
       icon: "briefcase",
       shape: "quarter",
-      accent: "coral",
+      accent: "clay",
       title: l("First-day support", "Apoyo el primer día"),
       text: l(
         "We go with you on your first day at work or at your project.",
         "Te acompañamos en tu primer día de trabajo o de proyecto.",
       ),
+    },
+    // ── A CONFIRMAR CON ICX: salen de los booklets de otros comités (Quito, Querétaro, Bolivia).
+    //    Cuando ESEN confirme que lo ofrece, cambiar `hidden` a false.
+    {
+      id: "lead",
+      icon: "lead",
+      shape: "triangle",
+      accent: "rust",
+      hidden: true,
+      title: l("Leadership sessions", "Sesiones de liderazgo"),
+      text: l("Sessions to reflect on your experience and your own leadership.", "Sesiones para reflexionar sobre tu experiencia y tu propio liderazgo."),
+    },
+    {
+      id: "outings",
+      icon: "outing",
+      shape: "circle",
+      accent: "terra",
+      hidden: true,
+      title: l("Outings with AIESEC members", "Paseos con miembros de AIESEC"),
+      text: l("Explore the country with members of the committee.", "Conoce el país junto a miembros del comité."),
+    },
+    {
+      id: "meals",
+      icon: "meal",
+      shape: "rect",
+      accent: "copper",
+      hidden: true,
+      title: l("Meals", "Comidas"),
+      text: l("Some opportunities include one or more meals a day.", "Algunas oportunidades incluyen una o más comidas al día."),
+    },
+    {
+      id: "certificate",
+      icon: "award",
+      shape: "quarter",
+      accent: "clay",
+      hidden: true,
+      title: l("Certificate", "Certificado"),
+      text: l("A certificate of your international experience.", "Un certificado de tu experiencia internacional."),
     },
   ],
 };

@@ -22,8 +22,10 @@ export const costMock: CostContent = {
       min: 0.25,
       max: 5.55,
       opensTransport: true,
+      // En el planificador se cuentan viajes urbanos; los viajes largos están en el modal de transporte.
+      plan: { qty: 10, maxQty: 30, unit: l("city bus rides", "viajes en bus urbano"), priceMin: 0.25, priceMax: 0.35 },
     },
-    { id: "food", label: l("Typical food", "Comida típica"), detail: l("Pupusas", "Pupusas"), icon: "utensils", min: 1.5, max: 2.5 },
+    { id: "food", label: l("Typical food", "Comida típica"), detail: l("Pupusas", "Pupusas"), icon: "utensils", min: 1.5, max: 2.5, plan: { qty: 4, maxQty: 14, unit: l("pupusa plates", "platos de pupusas") } },
     {
       id: "lunch",
       label: l("Lunch at a comedor", "Almuerzo en un comedor"),
@@ -31,6 +33,7 @@ export const costMock: CostContent = {
       icon: "soup",
       min: 4,
       max: 8,
+      plan: { qty: 5, maxQty: 14, unit: l("lunches", "almuerzos") },
     },
     {
       id: "phone",
@@ -47,6 +50,7 @@ export const costMock: CostContent = {
       icon: "ship",
       min: 3,
       max: 10,
+      plan: { qty: 1, maxQty: 4, unit: l("boat rides", "paseos en lancha") },
     },
     {
       id: "entry",
@@ -55,9 +59,23 @@ export const costMock: CostContent = {
       icon: "ticket",
       min: 1,
       max: 5,
+      plan: { qty: 2, maxQty: 8, unit: l("entries", "entradas") },
     },
   ],
-  transport: {
+  planner: {
+    title: l("Build your week", "Arma tu semana"),
+    intro: l(
+      "Choose how much you do in a typical week and see a rough range in dollars.",
+      "Elige cuánto haces en una semana típica y mira un estimado en dólares.",
+    ),
+    totalLabel: l("Estimated total", "Total estimado"),
+    perWeek: l("per week", "por semana"),
+    note: l(
+      "It only adds up the items above, using their ranges. Lodging, data and trips between departments are not included.",
+      "Solo suma los renglones de arriba, con sus rangos. No incluye hospedaje, datos móviles ni viajes entre departamentos.",
+    ),
+  },
+transport: {
     title: l("Getting around", "Cómo moverte"),
     intro: l(
       "Fares depend on distance. A short ride in the city costs a quarter; crossing the country can cost several dollars.",
@@ -65,14 +83,14 @@ export const costMock: CostContent = {
     ),
     scaleMax: 6,
     tiers: [
-      { id: "urban", label: l("City bus", "Bus urbano"), detail: l("Within a city", "Dentro de la ciudad"), min: 0.25, max: 0.35, accent: "mint" },
+      { id: "urban", label: l("City bus", "Bus urbano"), detail: l("Within a city", "Dentro de la ciudad"), min: 0.25, max: 0.35, accent: "copper" },
       {
         id: "inter",
         label: l("Nearby towns", "Pueblos cercanos"),
         detail: l("Short intercity routes", "Rutas interurbanas cortas"),
         min: 0.5,
         max: 1,
-        accent: "blue",
+        accent: "terra",
       },
       {
         id: "dept",
@@ -80,7 +98,7 @@ export const costMock: CostContent = {
         detail: l("For example, Morazán or San Miguel to San Salvador", "Por ejemplo, de Morazán o San Miguel a San Salvador"),
         min: 1,
         max: 5.55,
-        accent: "tangerine",
+        accent: "charcoal",
       },
       {
         id: "taxi",
@@ -89,7 +107,7 @@ export const costMock: CostContent = {
         min: 1.5,
         max: 6,
         openEnded: true,
-        accent: "coral",
+        accent: "clay",
       },
     ],
     examplesTitle: l("Fares people have reported", "Tarifas reportadas"),

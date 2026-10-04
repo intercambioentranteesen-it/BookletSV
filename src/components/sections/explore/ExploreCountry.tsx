@@ -82,7 +82,7 @@ export function ExploreCountry({ content }: { content: SiteContent["explore"] })
   return (
     <section id="country" aria-labelledby="country-title" className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <h2 id="country-title" className="text-4xl font-black leading-tight md:text-6xl">
+        <h2 id="country-title" className="text-4xl font-extrabold leading-tight md:text-6xl">
           {t(content.title)}
         </h2>
         <p className="mt-4 max-w-xl text-xl text-graphite">{t(content.intro)}</p>
@@ -107,8 +107,8 @@ export function ExploreCountry({ content }: { content: SiteContent["explore"] })
                 onClick={() => selectZone(z.id)}
                 onKeyDown={onTabKey}
                 className={cn(
-                  "relative inline-flex min-h-12 shrink-0 items-center gap-2 rounded-control border-2 px-4 font-black transition-colors duration-150",
-                  active ? "border-ink text-white" : "border-line text-ink hover:border-ink",
+                  "relative inline-flex min-h-12 shrink-0 items-center gap-2 rounded-control border-2 px-4 font-extrabold transition-colors duration-150",
+                  active ? "border-ink text-parchment" : "border-line text-ink hover:border-ink",
                 )}
               >
                 {active && (
@@ -118,7 +118,7 @@ export function ExploreCountry({ content }: { content: SiteContent["explore"] })
                     transition={{ duration: 0.28, ease: EASE_OUT }}
                   />
                 )}
-                <ShapeGlyph kind={z.shape} className={cn("relative h-5 w-5", ACCENT[z.accent].text)} />
+                <ShapeGlyph kind={z.shape} className={cn("relative h-5 w-5", active ? "text-parchment" : ACCENT[z.accent].text)} />
                 <span className="relative">{t(z.name)}</span>
               </button>
             );

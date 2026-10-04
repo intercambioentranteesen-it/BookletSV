@@ -1,8 +1,10 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
+import { motion } from "framer-motion";
 import { UI } from "@/data/ui";
 import { useLang } from "@/lib/i18n";
+import { fadeUp, stagger } from "@/lib/motion";
 import type { GoalItem, GoalsContent } from "@/types/content";
 
 function GoalTile({ goal, label }: { goal: GoalItem; label: string }) {
@@ -19,7 +21,7 @@ function GoalTile({ goal, label }: { goal: GoalItem; label: string }) {
       role="img"
       aria-label={label}
       style={{ backgroundColor: goal.color }}
-      className="flex h-40 w-40 shrink-0 flex-col justify-between p-3 font-black uppercase leading-tight text-white"
+      className="flex h-40 w-40 shrink-0 flex-col justify-between p-3 font-extrabold uppercase leading-tight text-white"
     >
       <span className="text-4xl">{goal.number}</span>
       <span className="text-sm">{label}</span>
@@ -32,31 +34,38 @@ export function Goals({ content }: { content: GoalsContent }) {
   const items = content.items.filter((g) => !g.hidden);
 
   return (
-    <section id="goals" aria-labelledby="goals-title" className="bg-mist py-20 md:py-28">
+    <section id="goals" aria-labelledby="goals-title" className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <h2 id="goals-title" className="max-w-3xl text-4xl font-black leading-tight md:text-6xl">
+        <h2 id="goals-title" className="max-w-3xl text-4xl font-extrabold leading-tight md:text-6xl">
           {t(content.title)}
         </h2>
         <p className="mt-4 max-w-2xl text-xl leading-relaxed text-graphite">{t(content.intro)}</p>
 
-        <ul role="list" className="mt-12 grid gap-6 md:grid-cols-2">
+        <motion.ul
+          role="list"
+          variants={stagger(0.1)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          className="mt-12 grid gap-6 md:grid-cols-2"
+        >
           {items.map((goal) => {
             const label = `${t(UI.sdg)} ${goal.number}: ${t(goal.name)}`;
             return (
-              <li key={goal.id} className="flex list-none flex-col gap-5 rounded-card border-2 border-line bg-white p-5 sm:flex-row">
+              <motion.li key={goal.id} variants={fadeUp(18, 0.5)} className="flex list-none flex-col gap-5 rounded-card border-2 border-line bg-white p-5 sm:flex-row">
                 <GoalTile goal={goal} label={label} />
                 <div>
-                  <h3 className="text-2xl font-black leading-tight">{label}</h3>
+                  <h3 className="text-2xl font-extrabold leading-tight">{label}</h3>
                   <p className="mt-2 leading-relaxed text-graphite">{t(goal.official)}</p>
                   <p className="mt-4 border-l-4 border-ink pl-3 leading-relaxed">
-                    <span className="block font-black">{t(UI.inPractice)}</span>
+                    <span className="block font-extrabold">{t(UI.inPractice)}</span>
                     {t(goal.inPractice)}
                   </p>
                 </div>
-              </li>
+              </motion.li>
             );
           })}
-        </ul>
+        </motion.ul>
 
         <p className="mt-8 max-w-3xl text-sm text-graphite">{t(content.disclaimer)}</p>
       </div>

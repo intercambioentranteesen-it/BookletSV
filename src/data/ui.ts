@@ -10,6 +10,7 @@ export const UI = {
     explore: l("Explore", "Explora"),
     cost: l("Costs", "Costos"),
     journey: l("Your experience", "Tu experiencia"),
+    flavors: l("Flavors", "Sabores"),
     goals: l("Goals", "Objetivos"),
     label: l("Main", "Principal"),
   },
@@ -33,6 +34,10 @@ export const UI = {
   experienceOpen: l("Open experience", "Abrir experiencia"),
   photoSlot: l("Photo", "Foto"),
   sdg: l("SDG", "ODS"),
+  fewer: l("Fewer", "Menos"),
+  more: l("More", "Más"),
+  factsLabel: l("Quick facts about El Salvador", "Datos rápidos de El Salvador"),
+  dishesAlt: l("Dish", "Platillo"),
   inPractice: l("In El Salvador", "En El Salvador"),
   logoAlt: l("Alchemist ESEN, El Salvador", "Alchemist ESEN, El Salvador"),
 };

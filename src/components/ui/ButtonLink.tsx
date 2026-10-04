@@ -8,7 +8,7 @@ interface ButtonLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 
 const VARIANTS = {
   // Blanco sobre #0062C9 ≈ 5.9:1
-  solid: "bg-brand-deep text-white hover:bg-ink",
+  solid: "bg-terra text-white hover:bg-ink",
   outline: "border-2 border-ink text-ink hover:bg-ink hover:text-white",
 } as const;
 

@@ -24,21 +24,23 @@ export function ExperienceCard({ exp, zone, onOpen }: ExperienceCardProps) {
         onClick={() => onOpen(exp.id)}
         className="group flex h-full w-full flex-col overflow-hidden rounded-card border-2 border-line bg-white text-left transition-colors duration-150 hover:border-ink"
       >
-        <div className="aspect-[4/3] w-full">
-          <Photo src={exp.image} alt={t(exp.title)} accent={zone.accent} shape={zone.shape} />
+        <div className="aspect-[4/3] w-full overflow-hidden">
+          <div className="h-full w-full transition-transform duration-500 ease-out-strong group-hover:scale-[1.04]">
+            <Photo src={exp.image} alt={t(exp.title)} accent={zone.accent} shape={zone.shape} />
+          </div>
         </div>
         <div className="flex flex-1 flex-col p-5">
-          <h3 className="text-2xl font-black leading-tight">{t(exp.title)}</h3>
+          <h3 className="text-2xl font-extrabold leading-tight">{t(exp.title)}</h3>
           <p className="mt-2 text-graphite">{t(exp.hook)}</p>
           <ul role="list" className="mt-4 flex flex-wrap gap-2">
             {exp.tags.slice(0, 3).map((tag) => (
-              <li key={tag.en} className="rounded-full bg-mist px-3 py-1 text-sm font-bold">
+              <li key={tag.en} className="rounded-full bg-sand px-3 py-1 text-sm font-bold">
                 {t(tag)}
               </li>
             ))}
           </ul>
           <div className="mt-auto flex items-center justify-between pt-5">
-            <span className="font-bold text-brand-deep">{fmtN(t(UI.stopsCount), exp.stops.length)}</span>
+            <span className="font-bold text-terra-deep">{fmtN(t(UI.stopsCount), exp.stops.length)}</span>
             <span
               aria-hidden="true"
               className="grid h-10 w-10 place-items-center rounded-full bg-ink text-white transition-transform duration-200 ease-out-strong group-hover:translate-x-0.5"

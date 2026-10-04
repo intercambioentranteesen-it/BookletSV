@@ -1,10 +1,10 @@
 import type { ZoneAccent } from "@/types/content";
 
-/** Clases completas (no dinámicas) para que Tailwind las detecte. */
-export const ACCENT: Record<ZoneAccent, { bg: string; text: string; border: string; soft: string }> = {
-  blue: { bg: "bg-brand", text: "text-brand", border: "border-brand", soft: "bg-brand/10" },
-  mint: { bg: "bg-mint", text: "text-mint", border: "border-mint", soft: "bg-mint/15" },
-  tangerine: { bg: "bg-tangerine", text: "text-tangerine", border: "border-tangerine", soft: "bg-tangerine/15" },
-  ocean: { bg: "bg-ocean", text: "text-ocean", border: "border-ocean", soft: "bg-ocean/15" },
-  coral: { bg: "bg-coral", text: "text-coral", border: "border-coral", soft: "bg-coral/15" },
+/** Clases completas (no dinámicas) para que Tailwind las detecte. `on` = color del ícono/texto sobre el color de la zona. */
+export const ACCENT: Record<ZoneAccent, { bg: string; text: string; border: string; shape: string; on: string }> = {
+  terra: { bg: "bg-terra", text: "text-terra", border: "border-terra", shape: "text-white/35", on: "text-white" },
+  copper: { bg: "bg-copper", text: "text-copper", border: "border-copper", shape: "text-white/45", on: "text-ink" },
+  charcoal: { bg: "bg-ink", text: "text-ink", border: "border-ink", shape: "text-white/20", on: "text-white" },
+  rust: { bg: "bg-rust", text: "text-rust", border: "border-rust", shape: "text-white/25", on: "text-white" },
+  clay: { bg: "bg-clay", text: "text-clay", border: "border-clay", shape: "text-white/45", on: "text-ink" },
 };

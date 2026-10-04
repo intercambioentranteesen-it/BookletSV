@@ -10,7 +10,7 @@ export interface L {
 }
 
 export type ZoneId = "coast" | "west" | "center" | "north" | "east";
-export type ZoneAccent = "blue" | "mint" | "tangerine" | "ocean" | "coral";
+export type ZoneAccent = "terra" | "copper" | "charcoal" | "rust" | "clay";
 export type ShapeKind = "triangle" | "circle" | "rect" | "quarter";
 
 export interface Zone {
@@ -50,6 +50,16 @@ export interface Experience {
 }
 
 export type CostIconKey = "bus" | "utensils" | "soup" | "phone" | "ship" | "ticket";
+/** Cómo entra un renglón en "Arma tu semana". */
+export interface CostPlan {
+  qty: number;
+  maxQty: number;
+  unit: L;
+  /** Si se indican, reemplazan el rango del renglón en el cálculo (p. ej. bus urbano). */
+  priceMin?: number;
+  priceMax?: number;
+}
+
 export interface CostItem {
   id: string;
   label: L;
@@ -59,6 +69,7 @@ export interface CostItem {
   max: number;
   /** Muestra "Desde $min" y abre el modal de transporte. */
   opensTransport?: boolean;
+  plan?: CostPlan;
 }
 
 export interface TransportTier {
@@ -78,6 +89,7 @@ export interface CostContent {
   bigStatCaption: L;
   disclaimer: L;
   items: CostItem[];
+  planner?: { title: L; intro: L; totalLabel: L; perWeek: L; note: L };
   transport: {
     title: L;
     intro: L;
@@ -89,7 +101,7 @@ export interface CostContent {
   };
 }
 
-export type JourneyIconKey = "plane" | "home" | "buddy" | "briefcase";
+export type JourneyIconKey = "plane" | "home" | "buddy" | "briefcase" | "lead" | "outing" | "award" | "meal";
 export interface JourneyStep {
   id: string;
   icon: JourneyIconKey;
@@ -97,6 +109,8 @@ export interface JourneyStep {
   accent: ZoneAccent;
   title: L;
   text: L;
+  /** true = no se muestra hasta que ICX confirme que ESEN lo ofrece. */
+  hidden?: boolean;
 }
 export interface JourneyContent {
   title: L;
@@ -128,6 +142,48 @@ export interface GoalsContent {
   items: GoalItem[];
 }
 
+export type FactIconKey = "money" | "language" | "clock" | "plug" | "sun";
+export interface QuickFact {
+  id: string;
+  icon: FactIconKey;
+  label: L;
+  value: L;
+}
+export interface QuickFactsContent {
+  title: L;
+  items: QuickFact[];
+}
+
+export interface Dish {
+  id: string;
+  name: L;
+  kind: L;
+  text: L;
+  tip?: L;
+  accent: ZoneAccent;
+  shape: ShapeKind;
+  image?: string;
+}
+export interface Festival {
+  id: string;
+  /** Mes (texto corto) y, si la fecha es exacta, el día. */
+  month: L;
+  day?: string;
+  title: L;
+  where?: L;
+  text: L;
+  notice?: L;
+}
+export interface FlavorsContent {
+  title: L;
+  intro: L;
+  dishesTitle: L;
+  dishes: Dish[];
+  festivalsTitle: L;
+  festivalsIntro: L;
+  festivals: Festival[];
+}
+
 export interface HeroContent {
   organization: L;
   subOrganization: L;
@@ -146,7 +202,9 @@ export interface ClosingContent {
 
 export interface SiteContent {
   hero: HeroContent;
+  quickFacts: QuickFactsContent;
   explore: { title: L; intro: L; zones: Zone[]; experiences: Experience[] };
+  flavors: FlavorsContent;
   cost: CostContent;
   journey: JourneyContent;
   goals: GoalsContent;

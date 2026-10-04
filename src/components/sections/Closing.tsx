@@ -10,10 +10,10 @@ import type { ClosingContent } from "@/types/content";
 export function Closing({ content }: { content: ClosingContent }) {
   const { t } = useLang();
   return (
-    <footer id="closing" className="bg-brand-deep text-white">
+    <footer id="closing" className="bg-ink text-parchment">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <h2 className="max-w-3xl text-5xl font-black leading-[1.05] md:text-7xl">{t(content.title)}</h2>
-        <p className="mt-6 max-w-xl text-xl leading-relaxed text-white/90">{t(content.text)}</p>
+        <h2 className="max-w-3xl text-5xl font-extrabold leading-[1.08] md:text-7xl">{t(content.title)}</h2>
+        <p className="mt-6 max-w-xl text-xl leading-relaxed text-parchment/90">{t(content.text)}</p>
 
         {content.channels.length > 0 && (
           <ul role="list" className="mt-8 flex flex-wrap gap-3">
@@ -21,7 +21,7 @@ export function Closing({ content }: { content: ClosingContent }) {
               <li key={c.href}>
                 <a
                   href={c.href}
-                  className="inline-flex min-h-12 items-center rounded-control border-2 border-white px-5 font-bold transition-colors duration-150 hover:bg-white hover:text-brand-deep"
+                  className="inline-flex min-h-12 items-center rounded-control border-2 border-parchment px-5 font-bold transition-colors duration-150 hover:bg-parchment hover:text-ink"
                 >
                   {t(c.label)}
                 </a>
@@ -30,30 +30,32 @@ export function Closing({ content }: { content: ClosingContent }) {
           </ul>
         )}
 
-        <div className="mt-16 flex flex-wrap items-end justify-between gap-8 border-t-2 border-white/40 pt-8">
-          <div>
-            {/* Logo del comité (versión sobre fondo crema). Pasará a la barra superior con la nueva paleta. */}
-            <img src="/brand/alchemist-esen.svg" alt={t(UI.logoAlt)} width={112} height={112} className="mb-6 h-28 w-28 rounded-card" />
-            <div aria-hidden="true" className="flex gap-3">
-              <ShapeGlyph kind="triangle" className="h-9 w-9 text-mint" />
-              <ShapeGlyph kind="rect" className="h-9 w-9 text-sun" />
-              <ShapeGlyph kind="circle" className="h-9 w-9 text-tangerine" />
-              <ShapeGlyph kind="quarter" className="h-9 w-9 text-coral" />
+        <div className="mt-16 flex flex-wrap items-end justify-between gap-8 border-t-2 border-parchment/30 pt-8">
+          <div className="flex items-end gap-6">
+            {/* Logo completo (trae su propio fondo pergamino) */}
+            <img src="/brand/alchemist-logo.svg" alt={t(UI.logoAlt)} width={128} height={128} className="h-32 w-32 rounded-card" />
+            <div>
+              <div aria-hidden="true" className="flex gap-3">
+                <ShapeGlyph kind="triangle" className="h-7 w-7 text-terra" />
+                <ShapeGlyph kind="rect" className="h-7 w-7 text-copper" />
+                <ShapeGlyph kind="circle" className="h-7 w-7 text-clay" />
+                <ShapeGlyph kind="quarter" className="h-7 w-7 text-parchment" />
+              </div>
+              <p className="mt-3 font-extrabold">
+                {UI.brand.name} {t(UI.brand.suffix)}
+              </p>
+              <p className="text-parchment/90">{UI.brand.sub}</p>
             </div>
-            <p className="mt-4 font-black">
-              {UI.brand.name} {t(UI.brand.suffix)}
-            </p>
-            <p className="text-white/90">{UI.brand.sub}</p>
-            <p className="mt-4 max-w-md text-sm text-white/85">{t(UI.confirm)}</p>
           </div>
           <a
             href="#top"
-            className="inline-flex min-h-12 items-center gap-2 rounded-control border-2 border-white px-5 font-bold transition-colors duration-150 hover:bg-white hover:text-brand-deep"
+            className="inline-flex min-h-12 items-center gap-2 rounded-control border-2 border-parchment px-5 font-bold transition-colors duration-150 hover:bg-parchment hover:text-ink"
           >
             {t(UI.backToTop)}
             <ArrowUp aria-hidden="true" className="h-5 w-5" />
           </a>
         </div>
+        <p className="mt-8 max-w-xl text-sm text-parchment/80">{t(UI.confirm)}</p>
       </div>
     </footer>
   );

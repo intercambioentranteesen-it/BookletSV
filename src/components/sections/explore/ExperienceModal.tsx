@@ -47,13 +47,13 @@ export function ExperienceModal({ exp, zone, onClose }: ExperienceModalProps) {
               <span aria-hidden="true" className={cn("h-3 w-3 rounded-full", ACCENT[shown.zone.accent].bg)} />
               {t(shown.zone.name)}
             </p>
-            <h2 id="exp-title" className="mt-2 text-4xl font-black leading-tight sm:text-5xl">
+            <h2 id="exp-title" className="mt-2 text-4xl font-extrabold leading-tight sm:text-5xl">
               {t(shown.exp.title)}
             </h2>
 
             {shown.exp.stat && (
               <p className="mt-4 flex items-baseline gap-2">
-                <span className="text-5xl font-black text-brand">
+                <span className="text-5xl font-extrabold text-terra">
                   <CountUp to={shown.exp.stat.value} />
                   <span className="ml-1 text-3xl">{t(shown.exp.stat.unit)}</span>
                 </span>
@@ -65,7 +65,7 @@ export function ExperienceModal({ exp, zone, onClose }: ExperienceModalProps) {
 
             <ul role="list" className="mt-4 flex flex-wrap gap-2">
               {shown.exp.tags.map((tag) => (
-                <li key={tag.en} className="rounded-full bg-mist px-3 py-1 text-sm font-bold">
+                <li key={tag.en} className="rounded-full bg-sand px-3 py-1 text-sm font-bold">
                   {t(tag)}
                 </li>
               ))}
@@ -75,7 +75,7 @@ export function ExperienceModal({ exp, zone, onClose }: ExperienceModalProps) {
               <Carousel
                 prevLabel={t(UI.prev)}
                 nextLabel={t(UI.next)}
-                heading={<h3 className="text-2xl font-black">{t(UI.stops)}</h3>}
+                heading={<h3 className="text-2xl font-extrabold">{t(UI.stops)}</h3>}
               >
                 {shown.exp.stops.map((stop) => (
                   <li key={stop.id} className="min-w-[82%] snap-start sm:min-w-[46%] lg:min-w-[calc((100%-2rem)/3)]">
@@ -83,17 +83,17 @@ export function ExperienceModal({ exp, zone, onClose }: ExperienceModalProps) {
                       <div className="aspect-[16/10] overflow-hidden rounded-control">
                         <Photo src={stop.image} alt={t(stop.name)} accent={shown.zone.accent} shape={shown.zone.shape} />
                       </div>
-                      <h4 className="text-xl font-black leading-tight">{t(stop.name)}</h4>
+                      <h4 className="text-xl font-extrabold leading-tight">{t(stop.name)}</h4>
                       <p className="leading-relaxed">{t(stop.what)}</p>
                       {stop.tip && (
                         <p className="flex gap-2 text-sm text-graphite">
-                          <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-brand-deep" />
+                          <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-terra-deep" />
                           <span>{t(stop.tip)}</span>
                         </p>
                       )}
                       {stop.notice && (
-                        <p className="border-l-4 border-ink bg-mist p-3 text-sm leading-relaxed">
-                          <span className="font-black">{t(UI.goodToKnow)}. </span>
+                        <p className="border-l-4 border-ink bg-sand p-3 text-sm leading-relaxed">
+                          <span className="font-extrabold">{t(UI.goodToKnow)}. </span>
                           {t(stop.notice)}
                         </p>
                       )}
