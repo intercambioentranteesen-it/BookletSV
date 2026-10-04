@@ -42,7 +42,7 @@ export function YourExperience({ content }: { content: JourneyContent }) {
             const Icon = JOURNEY_ICONS[step.icon];
             return (
               <li key={step.id} className="relative pl-20">
-                <span className="absolute left-0 top-0 grid h-11 w-11 place-items-center bg-white">
+                <span className="absolute left-0 top-0 grid h-11 w-11 place-items-center bg-sand">
                   <ShapeGlyph kind={step.shape} className={cn("absolute inset-0 h-full w-full", ACCENT[step.accent].text)} />
                   <Icon aria-hidden="true" className={cn("relative h-5 w-5", ACCENT[step.accent].on)} />
                 </span>

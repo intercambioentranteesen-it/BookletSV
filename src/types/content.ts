@@ -35,6 +35,7 @@ export interface Stop {
   /** Aviso destacado (p. ej. sitios de memoria). */
   notice?: L;
   image?: string;
+  credit?: string;
 }
 
 export interface Experience {
@@ -47,6 +48,8 @@ export interface Experience {
   stops: Stop[];
   stat?: Stat;
   image?: string;
+  /** Crédito de la foto, tal como debe mostrarse (obligatorio con CC BY). */
+  credit?: string;
 }
 
 export type CostIconKey = "bus" | "utensils" | "soup" | "phone" | "ship" | "ticket";
@@ -163,6 +166,7 @@ export interface Dish {
   accent: ZoneAccent;
   shape: ShapeKind;
   image?: string;
+  credit?: string;
 }
 export interface Festival {
   id: string;
@@ -200,6 +204,12 @@ export interface ClosingContent {
   channels: { label: L; href: string }[];
 }
 
+export interface PhotoCredit {
+  id: string;
+  label: L;
+  credit: string;
+}
+
 export interface SiteContent {
   hero: HeroContent;
   quickFacts: QuickFactsContent;
@@ -209,4 +219,6 @@ export interface SiteContent {
   journey: JourneyContent;
   goals: GoalsContent;
   closing: ClosingContent;
+  /** Se arma solo con las fotos que tienen `credit`. */
+  credits: PhotoCredit[];
 }

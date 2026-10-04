@@ -24,7 +24,7 @@ export default async function HomePage() {
         <YourExperience content={content.journey} />
         <Goals content={content.goals} />
       </main>
-      <Closing content={content.closing} />
+      <Closing content={content.closing} credits={content.credits} />
     </>
   );
 }

@@ -34,6 +34,8 @@ export const UI = {
   experienceOpen: l("Open experience", "Abrir experiencia"),
   photoSlot: l("Photo", "Foto"),
   sdg: l("SDG", "ODS"),
+  photoCredits: l("Photo credits", "Créditos de fotografía"),
+  each: l("each", "c/u"),
   fewer: l("Fewer", "Menos"),
   more: l("More", "Más"),
   factsLabel: l("Quick facts about El Salvador", "Datos rápidos de El Salvador"),

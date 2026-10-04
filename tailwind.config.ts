@@ -25,7 +25,7 @@ const config: Config = {
         clay: "#C9735A", // terracota claro (identidad de zona)
       },
       fontFamily: {
-        sans: ["var(--font-poppins)", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["var(--font-poppins, system-ui)", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       fontSize: {
         display: ["clamp(2.75rem, 8.2vw, 6.25rem)", { lineHeight: "1.04", letterSpacing: "-0.03em" }],

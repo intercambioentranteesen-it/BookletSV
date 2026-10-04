@@ -5,9 +5,9 @@ import { ArrowUp } from "lucide-react";
 import { ShapeGlyph } from "@/components/brand/Shapes";
 import { UI } from "@/data/ui";
 import { useLang } from "@/lib/i18n";
-import type { ClosingContent } from "@/types/content";
+import type { ClosingContent, PhotoCredit } from "@/types/content";
 
-export function Closing({ content }: { content: ClosingContent }) {
+export function Closing({ content, credits = [] }: { content: ClosingContent; credits?: PhotoCredit[] }) {
   const { t } = useLang();
   return (
     <footer id="closing" className="bg-ink text-parchment">
@@ -56,6 +56,19 @@ export function Closing({ content }: { content: ClosingContent }) {
           </a>
         </div>
         <p className="mt-8 max-w-xl text-sm text-parchment/80">{t(UI.confirm)}</p>
+
+        {credits.length > 0 && (
+          <details className="mt-6 text-sm text-parchment/85">
+            <summary className="inline-flex min-h-11 cursor-pointer items-center font-semibold underline underline-offset-4">{t(UI.photoCredits)}</summary>
+            <ul role="list" className="mt-3 grid gap-x-8 gap-y-1 sm:grid-cols-2">
+              {credits.map((c) => (
+                <li key={c.id}>
+                  <span className="font-semibold">{t(c.label)}:</span> {c.credit}
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
       </div>
     </footer>
   );

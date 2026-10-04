@@ -18,71 +18,67 @@ const unitRange = (it: CostItem) => ({ min: it.plan?.priceMin ?? it.min, max: it
 
 function Planner({ content }: { content: NonNullable<CostContent["planner"]> & { items: CostItem[] } }) {
   const { t } = useLang();
-  const planItems = content.items.filter((i) => i.plan);
+  const planItems = useMemo(() => content.items.filter((i) => i.plan), [content.items]);
   const [qty, setQty] = useState<Record<string, number>>(() => Object.fromEntries(planItems.map((i) => [i.id, i.plan!.qty])));
 
-  const total = useMemo(() => {
-    let min = 0;
-    let max = 0;
-    for (const it of planItems) {
-      const r = unitRange(it);
-      const q = qty[it.id] ?? 0;
-      min += r.min * q;
-      max += r.max * q;
-    }
-    return { min, max };
-  }, [planItems, qty]);
+  const rows = planItems.map((it) => {
+    const r = unitRange(it);
+    const q = qty[it.id] ?? 0;
+    return { it, r, q, min: r.min * q, max: r.max * q };
+  });
+  const total = rows.reduce((acc, row) => ({ min: acc.min + row.min, max: acc.max + row.max }), { min: 0, max: 0 });
 
   const step = (it: CostItem, d: number) =>
     setQty((cur) => ({ ...cur, [it.id]: Math.min(it.plan!.maxQty, Math.max(0, (cur[it.id] ?? 0) + d)) }));
 
-  const btn =
-    "grid h-11 w-11 place-items-center rounded-full border-2 border-parchment/70 transition-colors duration-150 hover:bg-parchment hover:text-ink disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-parchment";
+  const stepBtn =
+    "grid h-11 w-11 place-items-center transition-colors duration-150 hover:bg-ink hover:text-parchment disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-ink";
 
   return (
-    <div className="mx-auto mt-16 max-w-6xl px-6">
-      <div className="grid gap-10 rounded-card bg-ink p-6 text-parchment sm:p-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
-        <div>
-          <h3 className="text-3xl font-extrabold leading-tight md:text-4xl">{t(content.title)}</h3>
-          <p className="mt-3 max-w-sm leading-relaxed text-parchment/85">{t(content.intro)}</p>
+    <div className="mx-auto mt-20 grid max-w-6xl gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+      <div>
+        <h3 className="text-3xl font-extrabold leading-tight md:text-5xl">{t(content.title)}</h3>
+        <p className="mt-4 max-w-md text-xl leading-relaxed text-graphite">{t(content.intro)}</p>
+        <p className="mt-6 max-w-sm text-sm text-graphite">{t(content.note)}</p>
+      </div>
 
-          <p className="mt-8 text-sm text-parchment/85">{t(content.totalLabel)}</p>
-          <p aria-live="polite" className="mt-1 text-4xl font-extrabold leading-tight tabular-nums text-copper sm:text-5xl">
+      <div>
+        <ul role="list" className="divide-y divide-line border-t-2 border-ink">
+          {rows.map(({ it, r, q, min, max }) => (
+            <li key={it.id} className="flex flex-wrap items-center gap-x-5 gap-y-3 py-4">
+              <div className="min-w-[9rem] flex-1">
+                <p className="font-extrabold leading-tight">{t(it.plan!.unit)}</p>
+                <p className="text-sm text-graphite">
+                  {usd.format(r.min)} – {usd.format(r.max)} {t(UI.each)}
+                </p>
+              </div>
+              <div className="inline-flex items-center rounded-control border-2 border-ink">
+                <button type="button" className={`${stepBtn} rounded-l-[10px]`} aria-label={`${t(UI.fewer)}: ${t(it.plan!.unit)}`} disabled={q <= 0} onClick={() => step(it, -1)}>
+                  <Minus aria-hidden="true" className="h-4 w-4" />
+                </button>
+                <span className="grid h-11 w-12 place-items-center border-x-2 border-ink font-extrabold tabular-nums" aria-label={`${q} ${t(it.plan!.unit)}`}>
+                  {q}
+                </span>
+                <button type="button" className={`${stepBtn} rounded-r-[10px]`} aria-label={`${t(UI.more)}: ${t(it.plan!.unit)}`} disabled={q >= it.plan!.maxQty} onClick={() => step(it, 1)}>
+                  <Plus aria-hidden="true" className="h-4 w-4" />
+                </button>
+              </div>
+              <p className="w-36 text-right font-bold tabular-nums text-graphite">
+                {usd.format(min)} – {usd.format(max)}
+              </p>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t-2 border-ink pt-5">
+          <p className="text-lg font-extrabold">{t(content.totalLabel)}</p>
+          <p aria-live="polite" className="text-3xl font-extrabold tabular-nums sm:text-4xl">
             <motion.span key={`${total.min}-${total.max}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.18 }}>
               {usd.format(total.min)} – {usd.format(total.max)}
             </motion.span>
+            <span className="ml-2 text-base font-normal text-graphite">{t(content.perWeek)}</span>
           </p>
-          <p className="text-parchment/85">{t(content.perWeek)}</p>
-          <p className="mt-6 max-w-sm text-sm text-parchment/80">{t(content.note)}</p>
         </div>
-
-        <ul role="list" className="divide-y divide-parchment/25 border-y border-parchment/25">
-          {planItems.map((it) => {
-            const q = qty[it.id] ?? 0;
-            const r = unitRange(it);
-            return (
-              <li key={it.id} className="flex items-center gap-4 py-4">
-                <div className="min-w-0 flex-1">
-                  <p className="font-bold leading-tight">{t(it.plan!.unit)}</p>
-                  <p className="text-sm text-parchment/80">
-                    {usd.format(r.min)} – {usd.format(r.max)}
-                  </p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <button type="button" className={btn} aria-label={`${t(UI.fewer)}: ${t(it.plan!.unit)}`} disabled={q <= 0} onClick={() => step(it, -1)}>
-                    <Minus aria-hidden="true" className="h-5 w-5" />
-                  </button>
-                  <span className="w-8 text-center text-xl font-extrabold tabular-nums" aria-label={`${q} ${t(it.plan!.unit)}`}>
-                    {q}
-                  </span>
-                  <button type="button" className={btn} aria-label={`${t(UI.more)}: ${t(it.plan!.unit)}`} disabled={q >= it.plan!.maxQty} onClick={() => step(it, 1)}>
-                    <Plus aria-hidden="true" className="h-5 w-5" />
-                  </button>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
       </div>
     </div>
   );

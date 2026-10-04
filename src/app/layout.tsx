@@ -8,8 +8,8 @@ import "./globals.css";
 // Si el comité confirma otra familia para títulos, se agrega aquí como segunda fuente.
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "600", "700", "800"],
-  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
