@@ -537,7 +537,7 @@ export const experiencesMock: Experience[] = [
           "Las Pilas (30 m) and La Olomina (26 m and 9 m) in Julia’s Natural Park, with natural pools, lookouts and camping.",
           "Las Pilas (30 m) y La Olomina (26 m y 9 m) en Julia’s Natural Park, con pozas naturales, miradores y camping.",
         ),
-        tip: l("Entry was $5 for adults and $3 for children (2025 report).", "La entrada era de $5 adultos y $3 niños (reporte de 2025)."),
+        tip: l("", ""),
       },
     ],
   },
