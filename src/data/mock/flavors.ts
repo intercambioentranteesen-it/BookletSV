@@ -36,11 +36,11 @@ export const flavorsMock: FlavorsContent = {
     },
     {
       id: "panes",
-      name: l("Panes con pavo", "Panes con pavo"),
+      name: l("Panes con pollo", "Panes con Pollo"),
       kind: l("Holiday food", "Comida de celebración"),
       text: l(
-        "Bread rolls filled with turkey or chicken, tomato, cucumber, lettuce and sauce. They show up at holidays and family gatherings.",
-        "Panes rellenos de pavo o pollo, tomate, pepino, lechuga y salsa. Aparecen en fiestas y reuniones familiares.",
+        "Bread rolls filled with chicken, tomato, cucumber, lettuce and sauce. They show up at holidays and family gatherings.",
+        "Panes rellenos de Pollo, tomate, pepino, lechuga y salsa. Aparecen en fiestas y reuniones familiares.",
       ),
       accent: "charcoal",
       shape: "triangle",
