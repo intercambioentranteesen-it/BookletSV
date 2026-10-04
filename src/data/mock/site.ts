@@ -4,13 +4,13 @@ const l = (en: string, es: string): L => ({ en, es });
 const same = (v: string): L => ({ en: v, es: v });
 
 export const heroMock: HeroContent = {
-  organization: l("AIESEC", "AIESEC"),
+  organization: l("AIESEC in ESEN", "AIESEC en ESEN"),
   subOrganization: same("Incoming Exchange"),
   line1: l("Discover", "Descubre"),
   line2: same("El Salvador"),
   subtitle: l(
     "A small country in size, but giant in heart. Transform your life, and the lives of others, with AIESEC in ESEN.",
-    "Un país pequeño en territorio, pero gigante en corazón. Transforma tu vida y la de otros con AIESEC .",
+    "Un país pequeño en territorio, pero gigante en corazón. Transforma tu vida y la de otros con AIESEC en ESEN.",
   ),
   cta: l("Start exploring", "Empieza a explorar"),
 };

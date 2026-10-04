@@ -105,6 +105,29 @@ export interface JourneyContent {
   steps: JourneyStep[];
 }
 
+export interface GoalItem {
+  id: string;
+  number: number;
+  name: L;
+  /** Meta oficial de la ONU, parafraseada. */
+  official: L;
+  /** Cómo se ve en El Salvador (texto editable por el comité). */
+  inPractice: L;
+  /** Ícono oficial por idioma (public/ods/...). Si falta, se muestra un recuadro provisional con el color del ODS. */
+  image?: Partial<Record<Lang, string>>;
+  /** Color oficial del ODS (solo para el recuadro provisional). */
+  color: string;
+  /** true = no se muestra hasta confirmar con el comité y tener el ícono oficial. */
+  hidden?: boolean;
+}
+
+export interface GoalsContent {
+  title: L;
+  intro: L;
+  disclaimer: L;
+  items: GoalItem[];
+}
+
 export interface HeroContent {
   organization: L;
   subOrganization: L;
@@ -126,5 +149,6 @@ export interface SiteContent {
   explore: { title: L; intro: L; zones: Zone[]; experiences: Experience[] };
   cost: CostContent;
   journey: JourneyContent;
+  goals: GoalsContent;
   closing: ClosingContent;
 }

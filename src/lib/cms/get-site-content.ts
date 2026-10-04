@@ -1,5 +1,6 @@
 import { costMock } from "@/data/mock/cost-of-living";
 import { experiencesMock, zonesMock } from "@/data/mock/explore";
+import { goalsMock } from "@/data/mock/goals";
 import { closingMock, heroMock, journeyMock } from "@/data/mock/site";
 import type { L, SiteContent } from "@/types/content";
 
@@ -23,6 +24,7 @@ export async function getSiteContent(): Promise<SiteContent> {
     },
     cost: costMock,
     journey: journeyMock,
+    goals: goalsMock,
     closing: closingMock,
   };
 }

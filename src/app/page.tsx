@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import { Closing } from "@/components/sections/Closing";
+import { Goals } from "@/components/sections/goals/Goals";
 import { Hero } from "@/components/sections/Hero";
 import { CostOfLiving } from "@/components/sections/cost/CostOfLiving";
 import { ExploreCountry } from "@/components/sections/explore/ExploreCountry";
@@ -17,6 +18,7 @@ export default async function HomePage() {
         <ExploreCountry content={content.explore} />
         <CostOfLiving content={content.cost} />
         <YourExperience content={content.journey} />
+        <Goals content={content.goals} />
       </main>
       <Closing content={content.closing} />
     </>

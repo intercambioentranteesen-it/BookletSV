@@ -14,9 +14,9 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Discover El Salvador | AIESEC Incoming Exchange El Salvador",
+  title: "Discover El Salvador | AIESEC in ESEN",
   description:
-    "A small country in size, but giant in heart. Explore beaches, volcanoes, towns and everyday costs before you come to El Salvador with AIESEC.",
+    "A small country in size, but giant in heart. Explore beaches, volcanoes, towns and everyday costs before you come to El Salvador with AIESEC in ESEN.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

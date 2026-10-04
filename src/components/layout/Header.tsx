@@ -28,6 +28,7 @@ export function Header() {
     { href: "#country", label: UI.nav.explore },
     { href: "#cost", label: UI.nav.cost },
     { href: "#journey", label: UI.nav.journey },
+    { href: "#goals", label: UI.nav.goals },
   ];
 
   return (

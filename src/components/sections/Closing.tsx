@@ -1,5 +1,6 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element */
 import { ArrowUp } from "lucide-react";
 import { ShapeGlyph } from "@/components/brand/Shapes";
 import { UI } from "@/data/ui";
@@ -31,6 +32,8 @@ export function Closing({ content }: { content: ClosingContent }) {
 
         <div className="mt-16 flex flex-wrap items-end justify-between gap-8 border-t-2 border-white/40 pt-8">
           <div>
+            {/* Logo del comité (versión sobre fondo crema). Pasará a la barra superior con la nueva paleta. */}
+            <img src="/brand/alchemist-esen.svg" alt={t(UI.logoAlt)} width={112} height={112} className="mb-6 h-28 w-28 rounded-card" />
             <div aria-hidden="true" className="flex gap-3">
               <ShapeGlyph kind="triangle" className="h-9 w-9 text-mint" />
               <ShapeGlyph kind="rect" className="h-9 w-9 text-sun" />

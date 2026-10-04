@@ -5,11 +5,12 @@ const l = (en: string, es: string): L => ({ en, es });
 /** Textos de interfaz (no son contenido editable del CMS). */
 export const UI = {
   skip: l("Skip to content", "Saltar al contenido"),
-  brand: { name: "AIESEC", suffix: l("", ""), sub: "Incoming Exchange" },
+  brand: { name: "AIESEC", suffix: l("in ESEN", "en ESEN"), sub: "Incoming Exchange" },
   nav: {
     explore: l("Explore", "Explora"),
     cost: l("Costs", "Costos"),
     journey: l("Your experience", "Tu experiencia"),
+    goals: l("Goals", "Objetivos"),
     label: l("Main", "Principal"),
   },
   langLabel: l("Language", "Idioma"),
@@ -31,6 +32,9 @@ export const UI = {
   backToTop: l("Back to top", "Volver arriba"),
   experienceOpen: l("Open experience", "Abrir experiencia"),
   photoSlot: l("Photo", "Foto"),
+  sdg: l("SDG", "ODS"),
+  inPractice: l("In El Salvador", "En El Salvador"),
+  logoAlt: l("Alchemist ESEN, El Salvador", "Alchemist ESEN, El Salvador"),
 };
 
 export function fmtN(s: string, n: number): string {
