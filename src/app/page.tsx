@@ -2,6 +2,7 @@ import { Header } from "@/components/layout/Header";
 import { Closing } from "@/components/sections/Closing";
 import { Flavors } from "@/components/sections/Flavors";
 import { Hero } from "@/components/sections/Hero";
+import { Motto } from "@/components/sections/Motto";
 import { QuickFacts } from "@/components/sections/QuickFacts";
 import { CostOfLiving } from "@/components/sections/cost/CostOfLiving";
 import { ExploreCountry } from "@/components/sections/explore/ExploreCountry";
@@ -23,6 +24,7 @@ export default async function HomePage() {
         <CostOfLiving content={content.cost} />
         <YourExperience content={content.journey} />
         <Goals content={content.goals} />
+        <Motto motto={content.motto} />
       </main>
       <Closing content={content.closing} credits={content.credits} />
     </>

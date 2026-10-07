@@ -204,6 +204,14 @@ export interface ClosingContent {
   channels: { label: L; href: string }[];
 }
 
+export interface MottoContent {
+  title: L;
+  /** Frase que le da sentido al lema para quien visita. */
+  body: L;
+  note: L;
+  replay: L;
+}
+
 export interface PhotoCredit {
   id: string;
   label: L;
@@ -219,6 +227,8 @@ export interface SiteContent {
   journey: JourneyContent;
   goals: GoalsContent;
   closing: ClosingContent;
+  /** Lema del comité. */
+  motto: MottoContent;
   /** Se arma solo con las fotos que tienen `credit`. */
   credits: PhotoCredit[];
 }

@@ -3,6 +3,7 @@ import { experiencesMock, zonesMock } from "@/data/mock/explore";
 import { flavorsMock } from "@/data/mock/flavors";
 import { goalsMock } from "@/data/mock/goals";
 import { quickFactsMock } from "@/data/mock/quick-facts";
+import { mottoMock } from "@/data/mock/motto";
 import { closingMock, heroMock, journeyMock } from "@/data/mock/site";
 import type { L, PhotoCredit, SiteContent } from "@/types/content";
 
@@ -40,6 +41,7 @@ export async function getSiteContent(): Promise<SiteContent> {
     journey: journeyMock,
     goals: goalsMock,
     closing: closingMock,
+    motto: mottoMock,
     credits: collectCredits(),
   };
 }

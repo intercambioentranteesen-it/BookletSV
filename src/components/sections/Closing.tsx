@@ -11,8 +11,10 @@ export function Closing({ content, credits = [] }: { content: ClosingContent; cr
   const { t } = useLang();
   return (
     <footer id="closing" className="bg-ink text-parchment">
-      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <h2 className="max-w-3xl text-5xl font-extrabold leading-[1.08] md:text-7xl">{t(content.title)}</h2>
+      <div className="mx-auto max-w-6xl px-6 pb-20 pt-4 md:pb-28 md:pt-6">
+        {/* Línea que separa el lema (arriba, mismo fondo) de la despedida */}
+        <div aria-hidden="true" className="mb-12 h-px bg-parchment/25 md:mb-16" />
+        <h2 className="max-w-3xl text-4xl font-extrabold leading-[1.1] md:text-6xl">{t(content.title)}</h2>
         <p className="mt-6 max-w-xl text-xl leading-relaxed text-parchment/90">{t(content.text)}</p>
 
         {content.channels.length > 0 && (

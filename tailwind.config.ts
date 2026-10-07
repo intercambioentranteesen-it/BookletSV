@@ -21,6 +21,7 @@ const config: Config = {
         graphite: "#595959", // texto secundario (≈ 6:1 sobre pergamino)
         sand: "#ECE7DE", // fondo alterno (derivado del pergamino)
         line: "#D3CCC0", // bordes
+        gold: { DEFAULT: "#D4AF37", light: "#F2D675" }, // oro: solo para el lema "rocas en oro" (≈ 6.7:1 sobre carbón)
         rust: "#8A3A1D", // terracota oscuro (identidad de zona)
         clay: "#C9735A", // terracota claro (identidad de zona)
       },
