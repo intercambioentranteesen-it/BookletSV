@@ -15,7 +15,8 @@ function DishCard({ dish }: { dish: Dish }) {
     <div className="group flex h-full flex-col overflow-hidden rounded-card border-2 border-line bg-white">
       <div className="aspect-[16/10] overflow-hidden">
         <div className="h-full w-full transition-transform duration-500 ease-out-strong group-hover:scale-[1.04]">
-          <Photo src={dish.image} alt={t(dish.name)} accent={dish.accent} shape={dish.shape} />
+          {/* Convención: si el platillo no trae `image`, se busca /fotos/sabor-<id>.jpg. Si no existe, se ve el bloque de color. */}
+          <Photo src={dish.image ?? `/fotos/sabor-${dish.id}.jpg`} alt={t(dish.name)} accent={dish.accent} shape={dish.shape} />
         </div>
       </div>
       <div className="flex flex-1 flex-col gap-2 p-5">

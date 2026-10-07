@@ -69,6 +69,7 @@ export const experiencesMock: Experience[] = [
   {
     id: "surf-city",
     zone: "coast",
+    image: "/fotos/sunsetpark-01.jpg",
     title: same("Surf City"),
     hook: l("Waves, sunsets and a beach town 45 minutes from the city.", "Olas, atardeceres y un pueblo de playa a 45 minutos de la ciudad."),
     intro: l(
@@ -80,6 +81,7 @@ export const experiencesMock: Experience[] = [
     stops: [
       {
         id: "tunco",
+        image: "/fotos/el-tunco.jpg",
         name: same("El Tunco & El Sunzal"),
         what: l(
           "The most visited surf beach in the country, with a lively promenade, good waves and sunsets. El Sunzal is the quieter neighbor, great for the sea breeze.",
@@ -89,6 +91,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "tamanique",
+        image: "/fotos/tamaniquecascadas.jpg",
         name: l("Tamanique Waterfalls", "Cascadas de Tamanique"),
         what: l(
           "A trek through coffee plants and forest ends at natural pools and waterfalls. The descent is steep.",
@@ -101,6 +104,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "malecon",
+        image: "/fotos/puerto-la-lib.jpg",
         name: l("Puerto de La Libertad boardwalk", "Malecón del Puerto de La Libertad"),
         what: l(
           "A wide seaside walk with fresh fish, seafood stalls and plenty of local atmosphere.",
@@ -113,6 +117,7 @@ export const experiencesMock: Experience[] = [
   {
     id: "east-beaches",
     zone: "coast",
+    image: "/fotos/el-cuco.jpg",
     title: l("Eastern Beaches", "Playas del Oriente"),
     hook: l("Surf, long white sand and black-sand coves, away from the crowds.", "Surf, arena blanca interminable y calas de arena negra, lejos de las multitudes."),
     intro: l(
@@ -123,6 +128,7 @@ export const experiencesMock: Experience[] = [
     stops: [
       {
         id: "las-flores",
+        image: "/fotos/las-flores.jpg",
         name: l("Las Flores & El Cuco", "Las Flores y El Cuco"),
         what: l(
           "Las Flores has a world-class right-hand wave framed by rocky cliffs. A few kilometers away, El Cuco is a calm fishing-village beach, good for families.",
@@ -132,6 +138,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "el-espino",
+        image: "/fotos/el-espino.jpg",
         name: same("Playa El Espino"),
         what: l(
           "About 10 km of flat white sand in Usulután, inside the Jiquilisco Bay Ramsar site. Quiet on weekdays, lively on weekends.",
@@ -144,6 +151,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "playas-negras",
+        image: "/fotos/playas-negras-el-salvador01.jpg",
         name: l("Playas Negras & Playitas", "Playas Negras y Playitas"),
         what: l(
           "In La Unión: dark sand, rock pools and calm water. Playitas faces Conchagua volcano and Conchagüita island, with fresh seafood under beach huts.",
@@ -156,6 +164,7 @@ export const experiencesMock: Experience[] = [
   {
     id: "gulf",
     zone: "coast",
+    image: "/fotos/conch-2.jpg",
     title: l("Gulf & Mangroves", "Golfo y manglares"),
     hook: l("Islands by boat, a volcano with a view and mangrove channels.", "Islas en lancha, un volcán con vista y canales de manglar."),
     intro: l(
@@ -166,6 +175,7 @@ export const experiencesMock: Experience[] = [
     stops: [
       {
         id: "gulf-islands",
+        image: "/fotos/golfo-fo.jpg",
         name: l("Gulf of Fonseca islands", "Islas del Golfo de Fonseca"),
         what: l(
           "Boat tours leave from La Unión’s main pier to islands like Meanguera del Golfo and Conchagüita.",
@@ -178,6 +188,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "conchagua",
+        image: "/fotos/conch.jpg",
         name: l("Conchagua volcano viewpoints", "Miradores del volcán Conchagua"),
         what: l(
           "Above 1,200 m, Espíritu de la Montaña looks over the Gulf of Fonseca and the mountains of Honduras and Nicaragua. You can camp and watch the sunrise.",
@@ -187,6 +198,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "jiquilisco",
+        image: "/fotos/bahia-jiq.jpg",
         name: l("Jiquilisco Bay", "Bahía de Jiquilisco"),
         what: l(
           "Mangrove channels, islands and sunsets in Usulután, reached by boat from Puerto El Triunfo.",
@@ -201,6 +213,7 @@ export const experiencesMock: Experience[] = [
   {
     id: "flower-route",
     zone: "west",
+    image: "/fotos/ataco.jpg",
     title: same("Ruta de las Flores"),
     hook: l("Mural towns, food festivals and coffee on a mountain road.", "Pueblos con murales, ferias gastronómicas y café en una carretera de montaña."),
     intro: l(
@@ -211,6 +224,7 @@ export const experiencesMock: Experience[] = [
     stops: [
       {
         id: "juayua",
+        image: "/fotos/juayua.jpg",
         name: same("Juayúa"),
         what: l(
           "Known for its food festival, with local dishes in the main square.",
@@ -220,6 +234,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "ataco",
+        image: "/fotos/ataco.jpg",
         name: same("Concepción de Ataco"),
         what: l(
           "A bohemian town known for its colorful murals, crafts and cafés.",
@@ -413,6 +428,7 @@ export const experiencesMock: Experience[] = [
   {
     id: "suchitoto",
     zone: "north",
+    image: "/fotos/suchitotocasco.jpg",
     title: same("Suchitoto"),
     hook: l("Cobblestones, art and a lake in the hills.", "Adoquines, arte y un lago entre las colinas."),
     intro: l(
@@ -423,6 +439,7 @@ export const experiencesMock: Experience[] = [
     stops: [
       {
         id: "suchi-town",
+        image: "/fotos/suchitotocasco.jpg",
         name: l("Colonial town", "Casco colonial"),
         what: l(
           "Wander the cobbled streets, the white Santa Lucía church, art workshops and cafés.",
@@ -432,6 +449,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "suchi-lake",
+        image: "/fotos/suchitlan.jpg",
         name: l("Lake Suchitlán by boat", "Lago Suchitlán en lancha"),
         what: l(
           "Boat rides and bird watching from Puerto San Juan.",
@@ -441,6 +459,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "tercios",
+        image: "/fotos/los-tercios.jpg",
         name: l("Los Tercios Waterfall", "Cascada Los Tercios"),
         what: l(
           "A waterfall close to town and a classic stop on a Suchitoto day trip.",
@@ -452,6 +471,7 @@ export const experiencesMock: Experience[] = [
   {
     id: "el-pital",
     zone: "north",
+    image: "/fotos/pitalcima.jpg",
     title: same("El Pital"),
     hook: l("The highest point in the country, with cold air and clouds.", "El punto más alto del país, con frío y nubes."),
     intro: l(
@@ -463,6 +483,7 @@ export const experiencesMock: Experience[] = [
     stops: [
       {
         id: "rio-chiquito",
+        image: "/fotos/rio-chiquito.jpg",
         name: same("Río Chiquito"),
         what: l(
           "The usual access point from San Ignacio, with hot food, warm clothes for sale and pick-ups up the hill.",
@@ -475,6 +496,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "pena-rajada",
+        image: "/fotos/pena-rajada.jpg",
         name: same("Peña Rajada"),
         what: l(
           "A split rock formation in the cloud forest, with views toward San Ignacio, La Palma, Honduras and Guatemala.",
@@ -484,6 +506,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "summit",
+        image: "/fotos/pitalcima.jpg",
         name: l("The summit", "La cima"),
         what: l(
           "The highest point of El Salvador, shared with Honduras, and a great place to camp under the stars.",
@@ -498,6 +521,7 @@ export const experiencesMock: Experience[] = [
   {
     id: "paz-route",
     zone: "east",
+    image: "/fotos/ruta-de-paz.jpg",
     title: same("Ruta de Paz"),
     hook: l("Cool pine hills, memory sites and waterfalls in Morazán.", "Colinas de pino frescas, sitios de memoria y cascadas en Morazán."),
     intro: l(
@@ -508,6 +532,7 @@ export const experiencesMock: Experience[] = [
     stops: [
       {
         id: "perquin",
+        image: "/fotos/perquin.jpg",
         name: same("Perquín"),
         what: l(
           "A cool mountain town of pine and coffee. Visit the Museum of the Revolution, then climb the Perquín hill (about 15 minutes) for views of the Nahuaterique range.",
@@ -520,6 +545,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "mozote",
+        image: "/fotos/mozote.jpg",
         name: l("El Mozote memorial", "Memorial de El Mozote"),
         what: l(
           "A site of memory for the victims of the 1981 massacre, with plaques and spaces for the children who were killed.",
@@ -532,6 +558,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "arambala",
+        image: "/fotos/las-pilas.jpg",
         name: l("Arambala: Río Sapo and waterfalls", "Arambala: Río Sapo y cascadas"),
         what: l(
           "Las Pilas (30 m) and La Olomina (26 m and 9 m) in Julia’s Natural Park, with natural pools, lookouts and camping.",
@@ -544,6 +571,7 @@ export const experiencesMock: Experience[] = [
   {
     id: "alegria",
     zone: "east",
+    image: "/fotos/alegra.jpg",
     title: same("Alegría"),
     hook: l("A green crater lake and a glass floor over the valley.", "Una laguna verde en un cráter y un piso de cristal sobre el valle."),
     intro: l(
@@ -554,6 +582,7 @@ export const experiencesMock: Experience[] = [
     stops: [
       {
         id: "laguna",
+        image: "/fotos/alegra.jpg",
         name: l("Laguna de Alegría", "Laguna de Alegría"),
         what: l(
           "A turquoise-green sulfur lake inside the crater of Tecapa volcano, nicknamed “the Emerald of America” by Gabriela Mistral.",
@@ -563,18 +592,16 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "glass",
+        image: "/fotos/miradorcris.jpg",
         name: l("Glass viewpoint, Finca Rauda", "Mirador de cristal, Finca Rauda"),
         what: l(
           "About 10 m of glass floor at 1,200 m above sea level, plus three more viewpoints.",
           "Unos 10 m de piso de cristal a 1,200 m sobre el nivel del mar, más otros tres miradores.",
         ),
-        notice: l(
-          "Opened in 2022. Confirm it is open. The Cien Gradas lookout in town closed for renovation in January.",
-          "Abrió en 2022. Confirma que siga abierto. El mirador de las Cien Gradas, en el pueblo, cerró por remodelación en enero.",
-        ),
       },
       {
         id: "coffee-town",
+        image: "/fotos/cafe-alg.jpg",
         name: l("Coffee country", "Tierra de café"),
         what: l(
           "The area around Alegría and Santiago de María holds most of Usulután’s coffee farms.",
