@@ -51,4 +51,4 @@ export function Photo({ src, alt, accent, shape, className }: PhotoProps) {
       <ShapeGlyph kind={shape} className={cn("absolute -bottom-[18%] -right-[8%] h-[85%] w-[85%]", ACCENT[accent].shape)} />
     </div>
   );
-}
+} 

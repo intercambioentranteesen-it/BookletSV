@@ -10,5 +10,4 @@ export const mottoMock: MottoContent = {
     "En un país de volcanes, cada reto es una roca que puede volverse oro.",
   ),
   note: l("The motto of Alchemist, AIESEC in ESEN", "El lema de Alchemist, AIESEC en ESEN"),
-  replay: l("Watch again", "Ver otra vez"),
 };

@@ -209,7 +209,6 @@ export interface MottoContent {
   /** Frase que le da sentido al lema para quien visita. */
   body: L;
   note: L;
-  replay: L;
 }
 
 export interface PhotoCredit {
