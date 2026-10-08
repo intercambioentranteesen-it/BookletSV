@@ -145,7 +145,7 @@ export interface GoalsContent {
   items: GoalItem[];
 }
 
-export type FactIconKey = "money" | "language" | "clock" | "plug" | "sun";
+export type FactIconKey = "flag" | "money" | "language" | "clock" | "plug" | "sun";
 export interface QuickFact {
   id: string;
   icon: FactIconKey;

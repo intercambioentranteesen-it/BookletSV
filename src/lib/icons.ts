@@ -41,7 +41,8 @@ export const JOURNEY_ICONS: Record<JourneyIconKey, LucideIcon> = {
   meal: UtensilsCrossed,
 };
 
-export const FACT_ICONS: Record<FactIconKey, LucideIcon> = {
+/** El ícono "flag" no es de Lucide: se dibuja con el componente <Flag />. */
+export const FACT_ICONS: Record<Exclude<FactIconKey, "flag">, LucideIcon> = {
   money: Banknote,
   language: Languages,
   clock: Clock,
