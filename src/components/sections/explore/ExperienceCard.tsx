@@ -22,7 +22,7 @@ export function ExperienceCard({ exp, zone, onOpen }: ExperienceCardProps) {
         type="button"
         aria-haspopup="dialog"
         onClick={() => onOpen(exp.id)}
-        className="group flex h-full w-full flex-col overflow-hidden rounded-card border-2 border-line bg-white text-left transition-colors duration-150 hover:border-ink"
+        className="group flex h-full w-full flex-col overflow-hidden rounded-card border-2 border-line bg-white text-left transition-[transform,border-color] duration-200 ease-out-strong hover:-translate-y-0.5 hover:border-ink active:translate-y-0 active:scale-[0.99]"
       >
         <div className="aspect-[4/3] w-full overflow-hidden">
           <div className="h-full w-full transition-transform duration-500 ease-out-strong group-hover:scale-[1.04]">

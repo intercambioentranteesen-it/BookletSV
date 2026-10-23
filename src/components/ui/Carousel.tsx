@@ -44,7 +44,7 @@ export function Carousel({ heading, prevLabel, nextLabel, children }: CarouselPr
 
   const overflowing = !(edge.start && edge.end);
   const btn =
-    "inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-ink transition-colors duration-150 hover:border-ink disabled:opacity-35 disabled:hover:border-line";
+    "inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-ink transition-[transform,border-color] duration-150 ease-out-strong hover:border-ink active:scale-90 disabled:opacity-35 disabled:hover:border-line disabled:active:scale-100";
 
   return (
     <div>

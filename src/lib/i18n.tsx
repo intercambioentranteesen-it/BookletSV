@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { L, Lang } from "@/types/content";
 
 interface LangCtx {
@@ -11,6 +11,7 @@ interface LangCtx {
 
 const Ctx = createContext<LangCtx | null>(null);
 const KEY = "aiesec-lang";
+const SWAP_OUT_MS = 110; // lo que tarda el contenido en desvanecerse antes de cambiar el texto
 
 export function LangProvider({ children }: { children: ReactNode }) {
   // El servidor y el primer render usan inglés (idioma base); luego se detecta el del visitante.
@@ -33,13 +34,44 @@ export function LangProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  const setLang = useCallback((l: Lang) => {
-    setLangState(l);
-    try {
-      window.localStorage.setItem(KEY, l);
-    } catch {
-      /* ignorar */
+  const langRef = useRef(lang);
+  langRef.current = lang;
+  const timers = useRef<number[]>([]);
+
+  /**
+   * Cambia el idioma con un fundido corto: el contenido se desvanece (la barra superior queda quieta),
+   * se cambia el texto y vuelve a aparecer. Con "reducir movimiento" el cambio es directo.
+   */
+  const setLang = useCallback((next: Lang) => {
+    if (next === langRef.current) return;
+    const apply = () => {
+      setLangState(next);
+      try {
+        window.localStorage.setItem(KEY, next);
+      } catch {
+        /* ignorar */
+      }
+    };
+    const root = document.documentElement;
+    timers.current.forEach((id) => window.clearTimeout(id));
+    timers.current = [];
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+      delete root.dataset.langSwap;
+      apply();
+      return;
     }
+    root.dataset.langSwap = "out";
+    timers.current.push(
+      window.setTimeout(() => {
+        apply();
+        timers.current.push(window.setTimeout(() => delete root.dataset.langSwap, 40));
+      }, SWAP_OUT_MS),
+    );
+  }, []);
+
+  useEffect(() => {
+    const pending = timers.current;
+    return () => pending.forEach((id) => window.clearTimeout(id));
   }, []);
 
   const t = useCallback((v: L) => v[lang], [lang]);

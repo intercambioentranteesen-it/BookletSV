@@ -16,39 +16,44 @@ interface PhotoProps {
 }
 
 /**
- * Foto real si hay `src`; si no (o si el archivo no existe o falla al cargar),
- * un bloque plano del color de la zona con su forma. Nunca se ve un ícono de imagen rota.
+ * Siempre hay un bloque del color de la zona debajo. La foto, si existe, aparece encima con un fundido suave
+ * (y un leve asentamiento) cuando termina de cargar, así nunca hay un hueco en blanco ni un salto.
+ * Si el archivo no existe o falla, se queda solo el bloque de color: nunca se ve un ícono de imagen rota.
  */
 export function Photo({ src, alt, accent, shape, className }: PhotoProps) {
-  const [failed, setFailed] = useState(false);
+  const [state, setState] = useState<"loading" | "loaded" | "failed">("loading");
   const ref = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    setFailed(false);
+    setState("loading");
   }, [src]);
 
-  // Si el error ocurrió antes de que React activara los eventos, se detecta aquí
+  // Si la imagen ya estaba lista (o falló) antes de que React activara los eventos, se detecta aquí
   useEffect(() => {
     const el = ref.current;
-    if (el && el.complete && el.naturalWidth === 0) setFailed(true);
+    if (el?.complete) setState(el.naturalWidth > 0 ? "loaded" : "failed");
   }, [src]);
 
-  if (src && !failed) {
-    return (
-      <img
-        ref={ref}
-        src={src}
-        alt={alt}
-        loading="lazy"
-        decoding="async"
-        onError={() => setFailed(true)}
-        className={cn("h-full w-full object-cover", className)}
-      />
-    );
-  }
   return (
-    <div aria-hidden="true" className={cn("relative h-full w-full overflow-hidden", ACCENT[accent].bg, className)}>
-      <ShapeGlyph kind={shape} className={cn("absolute -bottom-[18%] -right-[8%] h-[85%] w-[85%]", ACCENT[accent].shape)} />
+    <div className={cn("relative h-full w-full overflow-hidden", ACCENT[accent].bg, className)}>
+      <div aria-hidden="true" className="absolute inset-0">
+        <ShapeGlyph kind={shape} className={cn("absolute -bottom-[18%] -right-[8%] h-[85%] w-[85%]", ACCENT[accent].shape)} />
+      </div>
+      {src && state !== "failed" && (
+        <img
+          ref={ref}
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setState("loaded")}
+          onError={() => setState("failed")}
+          className={cn(
+            "absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-700 ease-out-strong motion-reduce:transition-none",
+            state === "loaded" ? "scale-100 opacity-100" : "scale-[1.03] opacity-0 motion-reduce:scale-100",
+          )}
+        />
+      )}
     </div>
   );
-} 
+}

@@ -24,6 +24,22 @@
     background: #c3522c;
     color: #fff;
   }
+  /* Cambio de idioma: el contenido se desvanece un instante y vuelve con el texto nuevo (la barra superior queda quieta) */
+  main,
+  #closing {
+    transition: opacity 180ms ease-out;
+  }
+  html[data-lang-swap="out"] main,
+  html[data-lang-swap="out"] #closing {
+    opacity: 0;
+    transition-duration: 100ms;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    main,
+    #closing {
+      transition: none;
+    }
+  }
 }
 
 @layer utilities {

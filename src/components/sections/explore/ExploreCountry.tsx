@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, type KeyboardEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ShapeGlyph } from "@/components/brand/Shapes";
 import { UI, fmtN } from "@/data/ui";
@@ -26,6 +26,8 @@ export function ExploreCountry({ content }: { content: SiteContent["explore"] })
   const [zoneId, setZoneId] = useState<ZoneId>(zones[0].id);
   const [dir, setDir] = useState(1);
   const [openId, setOpenId] = useState<string | null>(null);
+  const [stuck, setStuck] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   const byId = useMemo(() => new Map(experiences.map((e) => [e.id, e])), [experiences]);
   const zoneById = useMemo(() => new Map(zones.map((z) => [z.id, z])), [zones]);
@@ -39,7 +41,20 @@ export function ExploreCountry({ content }: { content: SiteContent["explore"] })
     const next = zones.findIndex((z) => z.id === id);
     setDir(next >= zoneIndex ? 1 : -1);
     setZoneId(id);
+    // Si las pestañas están pegadas arriba (el visitante va a mitad de la lista), se vuelve al inicio de la nueva lista
+    if (stuck) sentinelRef.current?.scrollIntoView({ block: "start" });
   };
+
+  // Un centinela justo encima de las pestañas avisa cuándo quedan pegadas bajo la barra superior (para mostrar su línea inferior)
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(([e]) => setStuck(!e.isIntersecting && e.boundingClientRect.top < 70), {
+      rootMargin: "-64px 0px 0px 0px",
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   /* Enlace profundo: #exp-<id> abre la experiencia (se puede compartir por WhatsApp) */
   const syncFromHash = useCallback(() => {
@@ -87,42 +102,46 @@ export function ExploreCountry({ content }: { content: SiteContent["explore"] })
         </h2>
         <p className="mt-4 max-w-xl text-xl text-graphite">{t(content.intro)}</p>
 
-        {/* Zonas: cada una con su forma y color de marca */}
+        {/* Zonas: cada una con su forma y color de marca. Quedan fijas bajo la barra superior mientras se baja por las tarjetas */}
+        <div ref={sentinelRef} aria-hidden="true" className="-scroll-mt-4 mt-8 h-px" />
         <div
-          role="tablist"
-          aria-label={t(UI.zones)}
-          className="no-scrollbar -mx-6 mt-10 flex gap-2 overflow-x-auto px-6 pb-1 md:mx-0 md:px-0"
+          className={cn(
+            "sticky top-16 z-30 -mx-6 bg-parchment px-6 py-2 transition-shadow duration-200 md:mx-0 md:px-0",
+            stuck ? "shadow-[0_1px_0_0_theme(colors.line)]" : "shadow-[0_1px_0_0_transparent]",
+          )}
         >
-          {zones.map((z) => {
-            const active = z.id === zoneId;
-            return (
-              <button
-                key={z.id}
-                type="button"
-                role="tab"
-                id={`tab-${z.id}`}
-                aria-selected={active}
-                aria-controls="zone-panel"
-                tabIndex={active ? 0 : -1}
-                onClick={() => selectZone(z.id)}
-                onKeyDown={onTabKey}
-                className={cn(
-                  "relative inline-flex min-h-12 shrink-0 items-center gap-2 rounded-control border-2 px-4 font-extrabold transition-colors duration-150",
-                  active ? "border-ink text-parchment" : "border-line text-ink hover:border-ink",
-                )}
-              >
-                {active && (
-                  <motion.span
-                    layoutId="zone-pill"
-                    className="absolute inset-0 rounded-[10px] bg-ink"
-                    transition={{ duration: 0.28, ease: EASE_OUT }}
-                  />
-                )}
-                <ShapeGlyph kind={z.shape} className={cn("relative h-5 w-5", active ? "text-parchment" : ACCENT[z.accent].text)} />
-                <span className="relative">{t(z.name)}</span>
-              </button>
-            );
-          })}
+          <div role="tablist" aria-label={t(UI.zones)} className="no-scrollbar flex gap-2 overflow-x-auto py-1.5">
+            {zones.map((z) => {
+              const active = z.id === zoneId;
+              return (
+                <button
+                  key={z.id}
+                  type="button"
+                  role="tab"
+                  id={`tab-${z.id}`}
+                  aria-selected={active}
+                  aria-controls="zone-panel"
+                  tabIndex={active ? 0 : -1}
+                  onClick={() => selectZone(z.id)}
+                  onKeyDown={onTabKey}
+                  className={cn(
+                    "relative inline-flex min-h-12 shrink-0 items-center gap-2 rounded-control border-2 px-4 font-extrabold transition-[transform,color,border-color] duration-150 ease-out-strong active:scale-[0.97]",
+                    active ? "border-ink text-parchment" : "border-line text-ink hover:border-ink",
+                  )}
+                >
+                  {active && (
+                    <motion.span
+                      layoutId="zone-pill"
+                      className="absolute inset-0 rounded-[10px] bg-ink"
+                      transition={{ duration: 0.28, ease: EASE_OUT }}
+                    />
+                  )}
+                  <ShapeGlyph kind={z.shape} className={cn("relative h-5 w-5", active ? "text-parchment" : ACCENT[z.accent].text)} />
+                  <span className="relative">{t(z.name)}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         <AnimatePresence mode="wait" custom={dir} initial={false}>
@@ -136,7 +155,7 @@ export function ExploreCountry({ content }: { content: SiteContent["explore"] })
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="mt-8"
+            className="mt-6"
           >
             <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
               <p className="max-w-xl text-lg text-graphite">{t(zone.blurb)}</p>

@@ -70,7 +70,7 @@ export function Closing({ content, credits = [] }: { content: ClosingContent; cr
           </div>
           <a
             href="#top"
-            className="inline-flex min-h-12 items-center gap-2 rounded-control border-2 border-parchment px-5 font-bold transition-colors duration-150 hover:bg-parchment hover:text-ink"
+            className="inline-flex min-h-12 items-center gap-2 rounded-control border-2 border-parchment px-5 font-bold transition-[transform,background-color,color] duration-150 ease-out-strong hover:bg-parchment hover:text-ink active:scale-[0.97]"
           >
             {t(UI.backToTop)}
             <ArrowUp aria-hidden="true" className="h-5 w-5" />

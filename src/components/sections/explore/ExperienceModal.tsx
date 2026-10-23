@@ -36,7 +36,7 @@ export function ExperienceModal({ exp, zone, onClose }: ExperienceModalProps) {
               data-autofocus
               onClick={onClose}
               aria-label={t(UI.close)}
-              className="absolute right-3 top-3 grid h-11 w-11 place-items-center rounded-full bg-white text-ink transition-colors duration-150 hover:bg-ink hover:text-white"
+              className="absolute right-3 top-3 grid h-11 w-11 place-items-center rounded-full bg-white text-ink transition-[transform,background-color,color] duration-150 ease-out-strong hover:bg-ink hover:text-white active:scale-90"
             >
               <X aria-hidden="true" className="h-5 w-5" />
             </button>
