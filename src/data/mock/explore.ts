@@ -258,6 +258,7 @@ export const experiencesMock: Experience[] = [
   {
     id: "cerro-verde",
     zone: "west",
+    image: "/fotos/ilamatepec.jpg",
     title: l("Cerro Verde & Volcanoes", "Cerro Verde y volcanes"),
     hook: l("Three volcanoes, a cloud forest and a crater lake.", "Tres volcanes, un bosque nuboso y una laguna de cráter."),
     intro: l(
@@ -269,6 +270,7 @@ export const experiencesMock: Experience[] = [
     stops: [
       {
         id: "cerro-verde-park",
+        image: "/fotos/cerro-verde.jpg",
         name: l("Cerro Verde National Park", "Parque Nacional Cerro Verde"),
         what: l(
           "Trails through cloud forest with hummingbirds, and views of Izalco, once nicknamed the “Lighthouse of the Pacific”.",
@@ -278,6 +280,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "santa-ana",
+        image: "/fotos/ilamatepec.jpg",
         name: l("Santa Ana volcano (Ilamatepec)", "Volcán de Santa Ana (Ilamatepec)"),
         what: l(
           "The highest and most active volcano in the country. At the summit you walk the crater rim and see an emerald-green crater lake.",
@@ -287,6 +290,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "coatepeque",
+        image: "/fotos/coate.jpg",
         name: l("Lake Coatepeque", "Lago de Coatepeque"),
         what: l(
           "Almost 6 km long, formed in an old volcano crater. Swim, kayak or soak in the hot springs around the shore.",
@@ -301,6 +305,7 @@ export const experiencesMock: Experience[] = [
   {
     id: "san-salvador",
     zone: "center",
+    image: "/fotos/boqueron.jpg",
     title: l("San Salvador & its Volcano", "San Salvador y su volcán"),
     hook: l("A crater, a lookout and a historic center in one day.", "Un cráter, un mirador y un centro histórico en un día."),
     intro: l(
@@ -311,6 +316,7 @@ export const experiencesMock: Experience[] = [
     stops: [
       {
         id: "boqueron",
+        image: "/fotos/boqueron.jpg",
         name: l("El Boquerón National Park", "Parque Nacional El Boquerón"),
         what: l(
           "Less than 30 minutes from the city: short trails, wildflowers and viewpoints over a huge volcanic crater.",
@@ -323,6 +329,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "devils-door",
+        image: "/fotos/puerta-del-diablo.jpg",
         name: l("Devil’s Door", "Puerta del Diablo"),
         what: l(
           "A rock formation in Los Planes de Renderos with wide views and cool air.",
@@ -332,6 +339,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "historic-center",
+        image: "/fotos/cetroh.jpg",
         name: l("Historic Center", "Centro Histórico"),
         what: l(
           "The Metropolitan Cathedral (with Archbishop Romero’s crypt), the National Palace and the National Theatre, the oldest in Central America.",
@@ -343,6 +351,7 @@ export const experiencesMock: Experience[] = [
   {
     id: "archaeology",
     zone: "center",
+    image: "/fotos/cultura-maya.jpg",
     title: l("Maya Archaeology", "Arqueología maya"),
     hook: l("A buried village, a pyramid site and a UNESCO World Heritage Site.", "Una aldea sepultada, un sitio de pirámides y un Patrimonio de la Humanidad."),
     intro: l(
@@ -353,6 +362,7 @@ export const experiencesMock: Experience[] = [
     stops: [
       {
         id: "joya",
+        image: "/fotos/joya-de-ceren.jpg",
         name: same("Joya de Cerén"),
         what: l(
           "The country’s only UNESCO World Heritage Site: a Maya farming village buried by ash around 600 AD, nicknamed the “Pompeii of the Americas”.",
@@ -361,6 +371,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "san-andres",
+        image: "/fotos/san-andres.jpg",
         name: same("San Andrés"),
         what: l(
           "A large pre-Hispanic Maya site with an acropolis and an on-site museum, less than 20 miles from the city.",
@@ -369,6 +380,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "tazumal",
+        image: "/fotos/tazumal.jpg",
         name: same("Tazumal"),
         what: l(
           "In Chalchuapa, Santa Ana: a major Maya site, welcomed at the entrance by a big ceiba tree.",
@@ -381,6 +393,7 @@ export const experiencesMock: Experience[] = [
   {
     id: "ilopango",
     zone: "center",
+    image: "/fotos/ilopango.jpg",
     title: l("Lake Ilopango", "Lago de Ilopango"),
     hook: l("The country’s biggest lake, minutes from the capital.", "El lago más grande del país, a minutos de la capital."),
     intro: l(
@@ -391,6 +404,7 @@ export const experiencesMock: Experience[] = [
     stops: [
       {
         id: "ilo-boat",
+        image: "/fotos/lanchailo.jpg",
         name: l("Boat and ferry rides", "Paseos en lancha y ferri"),
         what: l(
           "Cross the lake by ferry or motorboat. Rides cost roughly $3 to $10 per person depending on the route.",
@@ -403,6 +417,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "ilo-water",
+        image: "/fotos/ilo-kayak.jpg",
         name: l("Kayak, paddle and diving", "Kayak, remo y buceo"),
         what: l(
           "Kayak, stand-up paddle and jet ski, plus more than 25 dive spots.",
@@ -411,6 +426,7 @@ export const experiencesMock: Experience[] = [
       },
       {
         id: "ilo-views",
+        image: "/fotos/miradoresilo.jpg",
         name: l("Lake viewpoints", "Miradores del lago"),
         what: l(
           "Scenic roads around the lake open wide views, and cafés with a view make good stops.",
