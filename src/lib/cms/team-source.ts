@@ -53,22 +53,33 @@ const stripBom = (text: string) => text.replace(/^\uFEFF/, "");
 
 export async function loadTeamPeople(): Promise<TeamPeople | null> {
   let raw: unknown = null;
+  let source = "ninguna";
   try {
     if (process.env.TEAM_DATA) {
+      source = `variable TEAM_DATA (${process.env.TEAM_DATA.length} caracteres)`;
       raw = JSON.parse(stripBom(process.env.TEAM_DATA));
     } else if (typeof window === "undefined") {
       // Archivo local, solo para desarrollo. En Vercel no existe (no está en git) y se usa TEAM_DATA.
       const [fs, path] = await Promise.all([import("fs"), import("path")]);
       const file = path.join(process.cwd(), "data", "private", "team.json");
-      if (fs.existsSync(file)) raw = JSON.parse(stripBom(fs.readFileSync(file, "utf8")));
+      if (fs.existsSync(file)) {
+        source = "archivo data/private/team.json";
+        raw = JSON.parse(stripBom(fs.readFileSync(file, "utf8")));
+      }
     }
   } catch (e) {
-    console.error("[team] No se pudo leer los datos del equipo:", e instanceof Error ? e.message : e);
+    console.error(`[team] No se pudo leer los datos del equipo (fuente: ${source}):`, e instanceof Error ? e.message : e);
     return null;
   }
-  if (raw === null) return null;
+  if (raw === null) {
+    // Sin nombres ni datos: solo dice qué pasó, para poder diagnosticar en el registro de la compilación
+    const env = process.env.TEAM_DATA === undefined ? "no existe" : "está vacía";
+    console.log(`[team] Sin datos privados (TEAM_DATA ${env} y no hay archivo local): se usa el equipo de ejemplo.`);
+    return null;
+  }
   const people = parsePeople(raw);
-  if (!people) console.error("[team] Los datos del equipo no tienen el formato esperado; se usa el equipo de ejemplo.");
+  if (!people) console.error(`[team] Los datos del equipo no tienen el formato esperado (fuente: ${source}); se usa el equipo de ejemplo.`);
+  else console.log(`[team] Fuente: ${source}.`);
   return people;
 }
 
@@ -100,5 +111,12 @@ export function applyTeam(base: TeamContent, people: TeamPeople | null, showAll:
 }
 
 export async function buildTeam(base: TeamContent): Promise<TeamContent> {
-  return applyTeam(base, await loadTeamPeople(), process.env.TEAM_SHOW_ALL === "1");
+  const showAll = process.env.TEAM_SHOW_ALL === "1";
+  const people = await loadTeamPeople();
+  const team = applyTeam(base, people, showAll);
+  if (people) {
+    const published = [team.lcp, ...team.areas.flatMap((a) => [a.lead, ...a.members])].filter(Boolean).length;
+    console.log(`[team] Personas que se publican: ${published}${showAll ? " (vista previa: todas)" : " (solo con permiso)"}.`);
+  }
+  return team;
 }
