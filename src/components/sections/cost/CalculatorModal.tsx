@@ -5,7 +5,6 @@ import { animate, useReducedMotion } from "framer-motion";
 import { ArrowLeftRight, Check, Copy, Minus, Plus, X } from "lucide-react";
 import { Modal } from "@/components/ui/Modal";
 import { UI } from "@/data/ui";
-import { cn } from "@/lib/cn";
 import { COST_ICONS } from "@/lib/icons";
 import { useLang } from "@/lib/i18n";
 import { EASE_OUT } from "@/lib/motion";

@@ -1,6 +1,5 @@
 "use client";
 
-import { UI } from "@/data/ui";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/cn";
