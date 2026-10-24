@@ -43,6 +43,57 @@
 }
 
 @layer utilities {
+  /* El follaje del roble se mece apenas (solo 5 grupos, casi no cuesta). Con "reducir movimiento" no se aplica. */
+  @keyframes oak-sway {
+    0%,
+    100% {
+      transform: rotate(-0.45deg);
+    }
+    50% {
+      transform: rotate(0.45deg);
+    }
+  }
+  /* Anillo de un solo golpe al elegir una zona en el mapa */
+  @keyframes map-ping {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1.9);
+      opacity: 0;
+    }
+  }
+  .map-ping {
+    animation: map-ping 0.9s ease-out 1 forwards;
+  }
+  .oak-sway {
+    animation: oak-sway 7s ease-in-out infinite;
+  }
+  /* El área elegida respira una vez al resaltarse */
+  @keyframes oak-breathe {
+    0% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(1.025);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .oak-breathe {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: oak-breathe 0.6s ease-out 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .oak-sway,
+    .oak-breathe,
+    .map-ping {
+      animation: none;
+    }
+  }
   .no-scrollbar {
     scrollbar-width: none;
   }

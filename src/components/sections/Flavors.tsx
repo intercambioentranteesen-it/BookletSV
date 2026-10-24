@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Info } from "lucide-react";
-import { Photo } from "@/components/brand/Photo";
+import { ZoomPhoto } from "@/components/brand/ZoomPhoto";
+import { Lightbox } from "@/components/ui/Lightbox";
 import { Carousel } from "@/components/ui/Carousel";
 import { UI } from "@/data/ui";
 import { useLang } from "@/lib/i18n";
@@ -11,12 +13,14 @@ import type { Dish, FlavorsContent, Festival } from "@/types/content";
 
 function DishCard({ dish }: { dish: Dish }) {
   const { t } = useLang();
+  const [zoom, setZoom] = useState(false);
+  const src = dish.image ?? `/fotos/sabor-${dish.id}.jpg`;
   return (
     <div className="group flex h-full flex-col overflow-hidden rounded-card border-2 border-line bg-white">
       <div className="aspect-[16/10] overflow-hidden">
         <div className="h-full w-full transition-transform duration-500 ease-out-strong group-hover:scale-[1.04]">
           {/* Convención: si el platillo no trae `image`, se busca /fotos/sabor-<id>.jpg. Si no existe, se ve el bloque de color. */}
-          <Photo src={dish.image ?? `/fotos/sabor-${dish.id}.jpg`} alt={t(dish.name)} accent={dish.accent} shape={dish.shape} />
+          <ZoomPhoto src={src} alt={t(dish.name)} accent={dish.accent} shape={dish.shape} onOpen={() => setZoom(true)} />
         </div>
       </div>
       <div className="flex flex-1 flex-col gap-2 p-5">
@@ -30,6 +34,7 @@ function DishCard({ dish }: { dish: Dish }) {
           </p>
         )}
       </div>
+      <Lightbox items={[{ src, alt: t(dish.name), caption: t(dish.name), credit: dish.credit }]} index={zoom ? 0 : null} onIndex={() => {}} onClose={() => setZoom(false)} />
     </div>
   );
 }

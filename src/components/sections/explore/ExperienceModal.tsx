@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Info, X } from "lucide-react";
-import { Photo } from "@/components/brand/Photo";
+import { ZoomPhoto } from "@/components/brand/ZoomPhoto";
 import { Carousel } from "@/components/ui/Carousel";
 import { CountUp } from "@/components/ui/CountUp";
+import { Lightbox, type LightboxItem } from "@/components/ui/Lightbox";
 import { Modal } from "@/components/ui/Modal";
 import { UI } from "@/data/ui";
 import { ACCENT } from "@/lib/accent";
@@ -25,12 +26,29 @@ export function ExperienceModal({ exp, zone, onClose }: ExperienceModalProps) {
   if (exp && zone) last.current = { exp, zone };
   const shown = last.current;
 
+  // Todas las fotos de la experiencia (portada y paradas) en un solo visor, para pasar de una a otra
+  const [lb, setLb] = useState<number | null>(null);
+  useEffect(() => {
+    if (!exp) setLb(null);
+  }, [exp]);
+  const gallery: LightboxItem[] = shown
+    ? [
+        ...(shown.exp.image ? [{ src: shown.exp.image, alt: t(shown.exp.title), caption: t(shown.exp.title), credit: shown.exp.credit }] : []),
+        ...shown.exp.stops.filter((st) => st.image).map((st) => ({ src: st.image!, alt: t(st.name), caption: t(st.name), credit: st.credit })),
+      ]
+    : [];
+  const openPhoto = (src?: string) => {
+    const i = gallery.findIndex((g) => g.src === src);
+    if (i >= 0) setLb(i);
+  };
+
   return (
+    <>
     <Modal open={!!exp} onClose={onClose} labelledBy="exp-title">
       {shown && (
         <article>
           <div className="relative h-44 sm:h-60">
-            <Photo src={shown.exp.image} alt={t(shown.exp.title)} accent={shown.zone.accent} shape={shown.zone.shape} />
+            <ZoomPhoto src={shown.exp.image} alt={t(shown.exp.title)} accent={shown.zone.accent} shape={shown.zone.shape} onOpen={() => openPhoto(shown.exp.image)} />
             <button
               type="button"
               data-autofocus
@@ -81,7 +99,7 @@ export function ExperienceModal({ exp, zone, onClose }: ExperienceModalProps) {
                   <li key={stop.id} className="min-w-[82%] snap-start sm:min-w-[46%] lg:min-w-[calc((100%-2rem)/3)]">
                     <div className="flex h-full flex-col gap-3 rounded-card border-2 border-line p-5">
                       <div className="aspect-[16/10] overflow-hidden rounded-control">
-                        <Photo src={stop.image} alt={t(stop.name)} accent={shown.zone.accent} shape={shown.zone.shape} />
+                        <ZoomPhoto src={stop.image} alt={t(stop.name)} accent={shown.zone.accent} shape={shown.zone.shape} onOpen={() => openPhoto(stop.image)} />
                       </div>
                       <h4 className="text-xl font-extrabold leading-tight">{t(stop.name)}</h4>
                       <p className="leading-relaxed">{t(stop.what)}</p>
@@ -108,5 +126,7 @@ export function ExperienceModal({ exp, zone, onClose }: ExperienceModalProps) {
         </article>
       )}
     </Modal>
+    <Lightbox items={gallery} index={lb} onIndex={setLb} onClose={() => setLb(null)} />
+    </>
   );
 }

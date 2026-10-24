@@ -1,4 +1,4 @@
-import type { CostContent, L } from "@/types/content";
+import type { CostContent, CurrencyOption, L } from "@/types/content";
 
 const l = (en: string, es: string): L => ({ en, es });
 
@@ -63,10 +63,10 @@ export const costMock: CostContent = {
     },
   ],
   planner: {
-    title: l("Build your week", "Arma tu semana"),
+    title: l("Calculate your El Salvador budget", "Calcula tu pasadita por El Salvador"),
     intro: l(
-      "Choose how much you do in a typical week and see a rough range in dollars.",
-      "Elige cuánto haces en una semana típica y mira un estimado en dólares.",
+      "Choose what you would do in a typical week and see what it would cost, in dollars or in your own currency.",
+      "Arma tu presupuesto: elige qué harías en una semana típica y mira cuánto te costaría, en dólares o en tu propia moneda.",
     ),
     totalLabel: l("Estimated total", "Total estimado"),
     perWeek: l("per week", "por semana"),
@@ -74,8 +74,36 @@ export const costMock: CostContent = {
       "It only adds up the items above, using their ranges. Lodging, data and trips between departments are not included.",
       "Solo suma los renglones de arriba, con sus rangos. No incluye hospedaje, datos móviles ni viajes entre departamentos.",
     ),
+    button: l("Calculate my budget", "Calcular mi presupuesto"),
+    buttonHint: l("Weekly spending estimate: transport, food and outings.", "Estimado de gastos de una semana: transporte, comida y paseos."),
+    currencyLabel: l("Show totals in", "Mostrar totales en"),
+    approx: l("Approximate: exchange rates change every day.", "Aproximado: las tasas de cambio cambian todos los días."),
+    updatedOn: l("Rates updated", "Tasas actualizadas"),
+    ratesBy: l("Rates by", "Tasas de"),
+    unavailable: l(
+      "Exchange rates are not available right now. Totals are shown in dollars.",
+      "Las tasas de cambio no están disponibles ahora. Los totales se muestran en dólares.",
+    ),
+    loading: l("Loading exchange rates…", "Cargando tasas de cambio…"),
+    copy: l("Copy summary", "Copiar resumen"),
+    copied: l("Copied", "Copiado"),
+    // Editar esta lista para agregar o quitar monedas (el dólar es la base y va siempre).
+    currencies: [
+      { code: "USD", name: l("US dollar", "Dólar estadounidense") },
+      { code: "COP", name: l("Colombian peso", "Peso colombiano") },
+      { code: "MXN", name: l("Mexican peso", "Peso mexicano") },
+      { code: "BRL", name: l("Brazilian real", "Real brasileño") },
+      { code: "PEN", name: l("Peruvian sol", "Sol peruano") },
+      { code: "ARS", name: l("Argentine peso", "Peso argentino") },
+      { code: "CLP", name: l("Chilean peso", "Peso chileno") },
+      { code: "EUR", name: l("Euro", "Euro") },
+      { code: "GBP", name: l("British pound", "Libra esterlina") },
+      { code: "CAD", name: l("Canadian dollar", "Dólar canadiense") },
+      { code: "EGP", name: l("Egyptian pound", "Libra egipcia") },
+      { code: "INR", name: l("Indian rupee", "Rupia india") },
+    ] satisfies CurrencyOption[],
   },
-transport: {
+  transport: {
     title: l("Getting around", "Cómo moverte"),
     intro: l(
       "Fares depend on distance. A short ride in the city costs a quarter; crossing the country can cost several dollars.",

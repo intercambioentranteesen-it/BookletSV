@@ -32,6 +32,7 @@ const LINKS = [
   { id: "cost", label: UI.nav.cost },
   { id: "journey", label: UI.nav.journey },
   { id: "goals", label: UI.nav.goals },
+  { id: "team", label: UI.nav.team },
 ];
 
 export function Header() {

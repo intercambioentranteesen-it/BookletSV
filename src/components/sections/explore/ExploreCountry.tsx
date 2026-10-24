@@ -9,6 +9,7 @@ import { cn } from "@/lib/cn";
 import { useLang } from "@/lib/i18n";
 import { EASE_OUT } from "@/lib/motion";
 import type { SiteContent, ZoneId } from "@/types/content";
+import { CountryMap } from "./CountryMap";
 import { ExperienceCard } from "./ExperienceCard";
 import { ExperienceModal } from "./ExperienceModal";
 
@@ -75,6 +76,22 @@ export function ExploreCountry({ content }: { content: SiteContent["explore"] })
     return () => window.removeEventListener("popstate", syncFromHash);
   }, [syncFromHash]);
 
+  const zoneFromMap = (id: string) => {
+    const exp = byId.get(id);
+    if (!exp) return;
+    setDir(zones.findIndex((z) => z.id === exp.zone) >= zoneIndex ? 1 : -1);
+    setZoneId(exp.zone);
+  };
+
+  const pickFromMap = (id: string) => {
+    const exp = byId.get(id);
+    if (exp) {
+      setDir(zones.findIndex((z) => z.id === exp.zone) >= zoneIndex ? 1 : -1);
+      setZoneId(exp.zone);
+    }
+    open(id);
+  };
+
   const open = (id: string) => {
     setOpenId(id);
     window.history.pushState({ exp: id }, "", `${HASH}${id}`);
@@ -102,8 +119,14 @@ export function ExploreCountry({ content }: { content: SiteContent["explore"] })
         </h2>
         <p className="mt-4 max-w-xl text-xl text-graphite">{t(content.intro)}</p>
 
+        {content.geo && (
+          <div className="mt-10">
+            <CountryMap zones={zones} experiences={experiences} geo={content.geo} activeZone={zoneId} onZone={zoneFromMap} onPick={pickFromMap} />
+          </div>
+        )}
+
         {/* Zonas: cada una con su forma y color de marca. Quedan fijas bajo la barra superior mientras se baja por las tarjetas */}
-        <div ref={sentinelRef} aria-hidden="true" className="-scroll-mt-4 mt-8 h-px" />
+        <div ref={sentinelRef} aria-hidden="true" className="-scroll-mt-4 mt-6 h-px" />
         <div
           className={cn(
             "sticky top-16 z-30 -mx-6 bg-parchment px-6 py-2 transition-shadow duration-200 md:mx-0 md:px-0",

@@ -4,6 +4,7 @@ import { Flavors } from "@/components/sections/Flavors";
 import { Hero } from "@/components/sections/Hero";
 import { Motto } from "@/components/sections/Motto";
 import { QuickFacts } from "@/components/sections/QuickFacts";
+import { Team } from "@/components/sections/team/Team";
 import { CostOfLiving } from "@/components/sections/cost/CostOfLiving";
 import { ExploreCountry } from "@/components/sections/explore/ExploreCountry";
 import { Goals } from "@/components/sections/goals/Goals";
@@ -24,6 +25,7 @@ export default async function HomePage() {
         <CostOfLiving content={content.cost} />
         <YourExperience content={content.journey} />
         <Goals content={content.goals} />
+        <Team content={content.team} />
         <Motto motto={content.motto} />
       </main>
       <Closing content={content.closing} credits={content.credits} />

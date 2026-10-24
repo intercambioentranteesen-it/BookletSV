@@ -13,6 +13,8 @@ interface PhotoProps {
   accent: ZoneAccent;
   shape: ShapeKind;
   className?: string;
+  /** Avisa cuando la foto está cargando, lista o falló (para habilitar el zoom solo si hay foto real). */
+  onState?: (state: "loading" | "loaded" | "failed") => void;
 }
 
 /**
@@ -20,13 +22,18 @@ interface PhotoProps {
  * (y un leve asentamiento) cuando termina de cargar, así nunca hay un hueco en blanco ni un salto.
  * Si el archivo no existe o falla, se queda solo el bloque de color: nunca se ve un ícono de imagen rota.
  */
-export function Photo({ src, alt, accent, shape, className }: PhotoProps) {
+export function Photo({ src, alt, accent, shape, className, onState }: PhotoProps) {
   const [state, setState] = useState<"loading" | "loaded" | "failed">("loading");
   const ref = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     setState("loading");
   }, [src]);
+
+  useEffect(() => {
+    onState?.(state);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
 
   // Si la imagen ya estaba lista (o falló) antes de que React activara los eventos, se detecta aquí
   useEffect(() => {

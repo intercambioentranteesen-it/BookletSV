@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Datos privados del equipo
+/data/private/
+.env
+.env*.local

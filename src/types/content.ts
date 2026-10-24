@@ -86,13 +86,37 @@ export interface TransportTier {
   accent: ZoneAccent;
 }
 
+export interface CurrencyOption {
+  code: string;
+  name: L;
+}
+
 export interface CostContent {
   title: L;
   intro: L;
   bigStatCaption: L;
   disclaimer: L;
   items: CostItem[];
-  planner?: { title: L; intro: L; totalLabel: L; perWeek: L; note: L };
+  planner?: {
+    title: L;
+    intro: L;
+    totalLabel: L;
+    perWeek: L;
+    note: L;
+    /** Texto del botón que abre la calculadora y su frase de apoyo. */
+    button: L;
+    buttonHint: L;
+    currencyLabel: L;
+    approx: L;
+    updatedOn: L;
+    ratesBy: L;
+    unavailable: L;
+    loading: L;
+    copy: L;
+    copied: L;
+    /** Monedas disponibles (el dólar es la base). Se editan aquí o en el CMS. */
+    currencies: CurrencyOption[];
+  };
   transport: {
     title: L;
     intro: L;
@@ -220,7 +244,7 @@ export interface PhotoCredit {
 export interface SiteContent {
   hero: HeroContent;
   quickFacts: QuickFactsContent;
-  explore: { title: L; intro: L; zones: Zone[]; experiences: Experience[] };
+  explore: { title: L; intro: L; zones: Zone[]; experiences: Experience[]; /** Ubicación de cada experiencia en el mapa. */ geo?: Record<string, { lat: number; lon: number }> };
   flavors: FlavorsContent;
   cost: CostContent;
   journey: JourneyContent;
@@ -228,6 +252,46 @@ export interface SiteContent {
   closing: ClosingContent;
   /** Lema del comité. */
   motto: MottoContent;
+  /** Quiénes somos: organigrama del comité. */
+  team: TeamContent;
   /** Se arma solo con las fotos que tienen `credit`. */
   credits: PhotoCredit[];
+}
+
+/* ── Quiénes somos (organigrama) ── */
+/** Universidad de la persona (así viene en la tabla de roles del comité). */
+export type SchoolId = "ESEN" | "UCA" | "UGB" | "UNIVO";
+
+export interface TeamPerson {
+  id: string;
+  name: string;
+  role: L;
+  /** Ruta de la foto (ej. /fotos/equipo/ana.jpg). Sin foto se muestran las iniciales. */
+  photo?: string;
+  /** Debe ser true para que la persona se publique (permiso por escrito). Si es false, no aparece en el sitio. */
+  consent: boolean;
+  /** Enlace opcional (red social profesional). */
+  link?: string;
+  /** Universidad, si se conoce. */
+  school?: SchoolId;
+}
+export interface TeamArea {
+  id: string;
+  name: L;
+  blurb?: L;
+  accent: ZoneAccent;
+  /** Puede faltar: si la persona no tiene permiso, el servidor no la envía. */
+  lead?: TeamPerson;
+  members: TeamPerson[];
+}
+export interface TeamContent {
+  title: L;
+  intro: L;
+  /** Si es true se muestra la etiqueta de "datos de ejemplo". Quitar cuando haya datos reales. */
+  sample?: boolean;
+  labels: { sample: L; hint: L; lcp: L; lcvp: L; team: L; pick: L; empty: L; preview: L };
+  lcp?: TeamPerson;
+  areas: TeamArea[];
+  /** Solo en vista previa (TEAM_SHOW_ALL=1): cuántas personas se muestran sin permiso confirmado. */
+  pendingConsent?: number;
 }
