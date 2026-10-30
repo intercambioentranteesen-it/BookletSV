@@ -68,7 +68,7 @@ export function CostOfLiving({ content }: { content: CostContent }) {
             <CountUp to={bus} decimals={2} prefix="$" duration={1.2} />
           </p>
           <p className="mt-2 text-lg font-bold">{t(content.bigStatCaption)}</p>
-          <p className="mt-6 max-w-sm text-sm text-graphite">{t(content.disclaimer)}</p>
+          <p className="mt-6 max-w-sm text-caption text-graphite">{t(content.disclaimer)}</p>
         </div>
 
         <motion.ul
@@ -133,7 +133,7 @@ export function CostOfLiving({ content }: { content: CostContent }) {
                   <Calculator aria-hidden="true" className="h-6 w-6" />
                   {t(content.planner.button)}
                 </button>
-                <p className="mt-3 text-sm text-parchment/75">{t(content.planner.buttonHint)}</p>
+                <p className="mt-3 text-caption text-parchment/75">{t(content.planner.buttonHint)}</p>
               </div>
               <CalculatorArt display={demoDisplay} codes={content.planner.currencies.map((c) => c.code).filter((c) => c !== "USD")} active={ctaHover} />
             </div>

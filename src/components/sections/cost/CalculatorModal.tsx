@@ -154,7 +154,7 @@ export function CalculatorModal({ open, onClose, planner, items, qty, setQty, cu
                     </span>
                     <div className="min-w-[8rem] flex-1">
                       <p className="font-extrabold leading-tight">{t(it.plan!.unit)}</p>
-                      <p className="text-sm text-graphite">
+                      <p className="text-caption text-graphite">
                         {formatMoney(r.min, "USD", "en")} – {formatMoney(r.max, "USD", "en")} {t(UI.each)}
                       </p>
                     </div>
@@ -184,7 +184,7 @@ export function CalculatorModal({ open, onClose, planner, items, qty, setQty, cu
 
           {/* Total */}
           <div className="mt-6 rounded-card bg-ink p-6 text-parchment sm:p-8">
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-copper">{t(planner.totalLabel)}</p>
+            <p className="text-caption font-bold uppercase tracking-[0.18em] text-copper">{t(planner.totalLabel)}</p>
             <p aria-hidden="true" className="mt-2 text-3xl font-extrabold tabular-nums leading-tight sm:text-5xl">
               {formatMoney(shownMin, showCurrency, locale)} – {formatMoney(shownMax, showCurrency, locale)}
             </p>
@@ -213,7 +213,7 @@ export function CalculatorModal({ open, onClose, planner, items, qty, setQty, cu
           </div>
 
           {/* Aviso de tasas */}
-          <div className="mt-5 space-y-2 text-sm text-graphite">
+          <div className="mt-5 space-y-2 text-caption text-graphite">
             {currency !== "USD" && rates.status === "loading" && <p>{t(planner.loading)}</p>}
             {currency !== "USD" && (rates.status === "error" || (rates.status === "ready" && !converted)) && <p className="font-semibold text-terra-deep">{t(planner.unavailable)}</p>}
             {converted && (

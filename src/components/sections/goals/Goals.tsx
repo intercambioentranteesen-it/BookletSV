@@ -11,9 +11,10 @@ function GoalTile({ goal, label }: { goal: GoalItem; label: string }) {
   const { lang } = useLang();
   const src = goal.image?.[lang] ?? goal.image?.es ?? goal.image?.en;
 
+  // En celular (columna) el ícono va centrado; desde `sm` (fila) queda arriba a la izquierda, junto al texto
   // Los íconos oficiales se muestran sin recortar, recolorear ni deformar
   if (src) {
-    return <img src={src} alt={label} width={160} height={160} loading="lazy" decoding="async" className="h-40 w-40 shrink-0 object-contain" />;
+    return <img src={src} alt={label} width={160} height={160} loading="lazy" decoding="async" className="h-40 w-40 shrink-0 self-center object-contain sm:self-start" />;
   }
   // Recuadro provisional (texto) hasta tener el ícono oficial
   return (
@@ -21,10 +22,10 @@ function GoalTile({ goal, label }: { goal: GoalItem; label: string }) {
       role="img"
       aria-label={label}
       style={{ backgroundColor: goal.color }}
-      className="flex h-40 w-40 shrink-0 flex-col justify-between p-3 font-extrabold uppercase leading-tight text-white"
+      className="flex h-40 w-40 shrink-0 flex-col justify-between self-center p-3 sm:self-start font-extrabold uppercase leading-tight text-white"
     >
       <span className="text-4xl">{goal.number}</span>
-      <span className="text-sm">{label}</span>
+      <span className="text-caption">{label}</span>
     </div>
   );
 }
@@ -67,7 +68,7 @@ export function Goals({ content }: { content: GoalsContent }) {
           })}
         </motion.ul>
 
-        <p className="mt-8 max-w-3xl text-sm text-graphite">{t(content.disclaimer)}</p>
+        <p className="mt-8 max-w-3xl text-caption text-graphite">{t(content.disclaimer)}</p>
       </div>
     </section>
   );

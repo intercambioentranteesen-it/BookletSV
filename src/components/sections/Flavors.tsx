@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Info } from "lucide-react";
+import { useId, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ChevronDown, Info } from "lucide-react";
 import { ZoomPhoto } from "@/components/brand/ZoomPhoto";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { Carousel } from "@/components/ui/Carousel";
+import { Notice } from "@/components/ui/Notice";
 import { UI } from "@/data/ui";
+import { cn } from "@/lib/cn";
 import { useLang } from "@/lib/i18n";
-import { fadeUp, stagger } from "@/lib/motion";
+import { EASE_OUT, fadeUp, stagger } from "@/lib/motion";
 import type { Dish, FlavorsContent, Festival } from "@/types/content";
 
 function DishCard({ dish }: { dish: Dish }) {
@@ -28,7 +30,7 @@ function DishCard({ dish }: { dish: Dish }) {
         <h4 className="text-2xl font-extrabold leading-tight">{t(dish.name)}</h4>
         <p className="leading-relaxed text-graphite">{t(dish.text)}</p>
         {dish.tip && (
-          <p className="mt-auto flex gap-2 pt-3 text-sm text-graphite">
+          <p className="mt-auto flex gap-2 pt-3 text-caption text-graphite">
             <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-terra-deep" />
             <span>{t(dish.tip)}</span>
           </p>
@@ -41,28 +43,62 @@ function DishCard({ dish }: { dish: Dish }) {
 
 function FestivalItem({ f }: { f: Festival }) {
   const { t } = useLang();
+  const reduce = useReducedMotion();
+  const [open, setOpen] = useState(false);
+  const panelId = useId();
   return (
-    <motion.li variants={fadeUp(16, 0.5)} className="flex list-none gap-4">
-      <div className="grid h-20 w-20 shrink-0 place-content-center rounded-control bg-ink text-center text-parchment">
-        {f.day ? (
-          <>
-            <span className="text-sm leading-none">{t(f.month)}</span>
-            <span className="mt-1 text-3xl font-extrabold leading-none">{f.day}</span>
-          </>
-        ) : (
-          <span className="px-1 text-lg font-extrabold leading-tight">{t(f.month)}</span>
-        )}
+    <motion.li variants={fadeUp(16, 0.5)} className="flex list-none flex-col gap-4 rounded-card border-2 border-line bg-white p-5">
+      {/* Fecha + nombre arriba; el texto, el detalle y el aviso van debajo con todo el ancho (en celular el texto no queda apretado) */}
+      <div className="flex items-center gap-4">
+        <div className="grid h-[4.5rem] w-[4.5rem] shrink-0 place-content-center rounded-control bg-ink text-center text-parchment">
+          {f.day ? (
+            <>
+              <span className="text-sm leading-none">{t(f.month)}</span>
+              <span className="mt-1 text-3xl font-extrabold leading-none">{f.day}</span>
+            </>
+          ) : (
+            <span className="px-1 text-sm font-extrabold leading-tight">{t(f.month)}</span>
+          )}
+        </div>
+        <div className="min-w-0">
+          <h4 className="text-xl font-extrabold leading-tight">{t(f.title)}</h4>
+          {f.where && <p className="font-semibold text-terra-deep">{t(f.where)}</p>}
+        </div>
       </div>
-      <div className="min-w-0">
-        <h4 className="text-xl font-extrabold leading-tight">{t(f.title)}</h4>
-        {f.where && <p className="font-semibold text-terra-deep">{t(f.where)}</p>}
-        <p className="mt-1 leading-relaxed text-graphite">{t(f.text)}</p>
-        {f.notice && (
-          <p className="mt-3 border-l-4 border-ink bg-white p-3 text-sm leading-relaxed">
-            <span className="font-bold">{t(UI.goodToKnow)}. </span>
-            {t(f.notice)}
-          </p>
+      <div className="flex min-w-0 flex-col">
+        <p className="leading-relaxed text-graphite">{t(f.text)}</p>
+
+        {f.details && (
+          <>
+            <button
+              type="button"
+              aria-expanded={open}
+              aria-controls={panelId}
+              onClick={() => setOpen((v) => !v)}
+              className="mt-2 inline-flex min-h-11 items-center gap-1.5 self-start font-bold text-terra-deep underline-offset-4 hover:underline"
+            >
+              {t(open ? UI.lessDetails : UI.moreDetails)}
+              <ChevronDown aria-hidden="true" className={cn("h-5 w-5 transition-transform duration-200 ease-out-strong", open && "rotate-180")} />
+            </button>
+            <AnimatePresence initial={false}>
+              {open && (
+                <motion.div
+                  id={panelId}
+                  key="details"
+                  initial={reduce ? false : { height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={reduce ? { opacity: 0, transition: { duration: 0 } } : { height: 0, opacity: 0 }}
+                  transition={{ duration: reduce ? 0 : 0.25, ease: EASE_OUT }}
+                  className="overflow-hidden"
+                >
+                  <p className="pt-1 leading-relaxed text-graphite">{t(f.details)}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </>
         )}
+
+        {f.notice && <Notice className="mt-3">{t(f.notice)}</Notice>}
       </div>
     </motion.li>
   );
@@ -101,7 +137,7 @@ export function Flavors({ content }: { content: FlavorsContent }) {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
-            className="mt-8 grid gap-x-12 gap-y-8 md:grid-cols-2"
+            className="mt-8 grid gap-5 md:grid-cols-2"
           >
             {content.festivals.map((f) => (
               <FestivalItem key={f.id} f={f} />

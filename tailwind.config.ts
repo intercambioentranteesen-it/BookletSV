@@ -24,12 +24,15 @@ const config: Config = {
         gold: { DEFAULT: "#D4AF37", light: "#F2D675" }, // oro: solo para el lema "rocas en oro" (≈ 6.7:1 sobre carbón)
         rust: "#8A3A1D", // terracota oscuro (identidad de zona)
         clay: "#C9735A", // terracota claro (identidad de zona)
+        maplabel: "#4F4B44", // rótulos del mapa sobre pergamino/vecinos (≥ 5:1 sobre la trama y los países vecinos)
       },
       fontFamily: {
         sans: ["var(--font-poppins, system-ui)", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       fontSize: {
         display: ["clamp(2.75rem, 8.2vw, 6.25rem)", { lineHeight: "1.04", letterSpacing: "-0.03em" }],
+        // Texto de apoyo (consejos, etiquetas, avisos): 15px en lugar de 14px, con interlineado más cómodo
+        caption: ["0.9375rem", { lineHeight: "1.5" }],
       },
       borderRadius: {
         control: "0.75rem",

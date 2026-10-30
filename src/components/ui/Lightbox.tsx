@@ -109,7 +109,7 @@ export function Lightbox({ items, index, onIndex, onClose }: LightboxProps) {
           }}
         >
           <div className="flex items-center justify-between gap-4 p-4 sm:p-6">
-            <p className="text-sm font-semibold text-parchment/80" aria-live="polite">
+            <p className="text-caption font-semibold text-parchment/80" aria-live="polite">
               {many ? t(UI.photoCount).replace("{n}", String(index! + 1)).replace("{total}", String(items.length)) : ""}
             </p>
             <button ref={closeBtn} type="button" aria-label={t(UI.close)} className={BTN} onClick={(e) => { e.stopPropagation(); state.current.onClose(); }}>
@@ -146,7 +146,7 @@ export function Lightbox({ items, index, onIndex, onClose }: LightboxProps) {
           <div className="p-4 text-center sm:p-6" onClick={(e) => e.stopPropagation()}>
             {item.caption && <p className="text-lg font-extrabold">{item.caption}</p>}
             {item.credit && (
-              <p className="mt-1 text-sm text-parchment/75">
+              <p className="mt-1 text-caption text-parchment/75">
                 {t(UI.photoCredit)}: {item.credit}
               </p>
             )}

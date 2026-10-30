@@ -1,4 +1,5 @@
 import { Header } from "@/components/layout/Header";
+import { ResumePlace } from "@/components/layout/ResumePlace";
 import { Closing } from "@/components/sections/Closing";
 import { Flavors } from "@/components/sections/Flavors";
 import { Hero } from "@/components/sections/Hero";
@@ -17,6 +18,7 @@ export default async function HomePage() {
   return (
     <>
       <Header />
+      <ResumePlace />
       <main id="main">
         <Hero content={content.hero} />
         <QuickFacts content={content.quickFacts} />

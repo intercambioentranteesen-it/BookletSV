@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll } from "framer-motion";
 import { Info } from "lucide-react";
-import { ShapeGlyph } from "@/components/brand/Shapes";
+import { ShapeGlyph, badgeIconStyle } from "@/components/brand/Shapes";
 import { ACCENT } from "@/lib/accent";
 import { cn } from "@/lib/cn";
 import { JOURNEY_ICONS } from "@/lib/icons";
@@ -32,19 +32,20 @@ export function YourExperience({ content }: { content: JourneyContent }) {
         </div>
 
         <ol ref={ref} role="list" className="relative space-y-10">
-          <span aria-hidden="true" className="absolute bottom-6 left-[21px] top-6 w-[3px] bg-line" />
+          <span aria-hidden="true" className="absolute bottom-6 left-[22.5px] top-6 w-[3px] bg-line" />
           <motion.span
             aria-hidden="true"
-            className="absolute bottom-6 left-[21px] top-6 w-[3px] bg-terra"
+            className="absolute bottom-6 left-[22.5px] top-6 w-[3px] bg-terra"
             style={{ transformOrigin: "top", scaleY: reduce ? 1 : scrollYProgress }}
           />
           {content.steps.filter((step) => !step.hidden).map((step) => {
             const Icon = JOURNEY_ICONS[step.icon];
             return (
               <li key={step.id} className="relative pl-20">
-                <span className="absolute left-0 top-0 grid h-11 w-11 place-items-center bg-sand">
+                <span className="absolute left-0 top-0 block h-12 w-12 bg-sand">
                   <ShapeGlyph kind={step.shape} className={cn("absolute inset-0 h-full w-full", ACCENT[step.accent].text)} />
-                  <Icon aria-hidden="true" className={cn("relative h-5 w-5", ACCENT[step.accent].on)} />
+                  {/* El ícono se centra en el centro visual de la forma (no de la caja) para que no se vea corrido */}
+                  <Icon aria-hidden="true" style={badgeIconStyle(step.shape)} className={cn("absolute -translate-x-1/2 -translate-y-1/2", ACCENT[step.accent].on)} />
                 </span>
                 <h3 className="text-2xl font-extrabold leading-tight">{t(step.title)}</h3>
                 <p className="mt-2 max-w-md text-lg leading-relaxed text-graphite">{t(step.text)}</p>

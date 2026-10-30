@@ -31,7 +31,7 @@ function PersonCard({ person, area, onOpen }: { person: TeamPerson; area: TeamAr
         <Avatar person={person} accent={area.accent} className="w-14 shrink-0 transition-transform duration-300 ease-out-strong group-hover:scale-105" />
         <span className="min-w-0">
           <span className="block font-extrabold leading-tight">{person.name}</span>
-          <span className="block text-sm text-graphite">{t(person.role)}</span>
+          <span className="block text-caption text-graphite">{t(person.role)}</span>
         </span>
       </button>
     </motion.li>
@@ -76,10 +76,10 @@ export function Team({ content }: { content: TeamContent }) {
             {t(content.title)}
           </h2>
           {!!content.pendingConsent && (
-            <span className="mt-2 inline-flex max-w-md items-center rounded-2xl border-2 border-ink px-3 py-1 text-sm font-bold">{t(content.labels.preview).replace("{n}", String(content.pendingConsent))}</span>
+            <span className="mt-2 inline-flex max-w-md items-center rounded-2xl border-2 border-ink px-3 py-1 text-caption font-bold">{t(content.labels.preview).replace("{n}", String(content.pendingConsent))}</span>
           )}
           {content.sample && (
-            <span className="mt-2 inline-flex items-center rounded-full border-2 border-ink px-3 py-1 text-sm font-bold">{t(content.labels.sample)}</span>
+            <span className="mt-2 inline-flex items-center rounded-full border-2 border-ink px-3 py-1 text-caption font-bold">{t(content.labels.sample)}</span>
           )}
         </div>
         <p className="mt-4 max-w-xl text-xl text-graphite">{t(content.intro)}</p>
@@ -97,13 +97,13 @@ export function Team({ content }: { content: TeamContent }) {
                   {/* LCVP */}
                   {lead && area && (
                     <div className="rounded-card bg-ink p-6 text-parchment">
-                      <p className="text-sm font-bold uppercase tracking-wide text-copper">{t(content.labels.lcvp)}</p>
+                      <p className="text-caption font-bold uppercase tracking-wide text-copper">{t(content.labels.lcvp)}</p>
                       <button type="button" aria-haspopup="dialog" aria-label={`${lead.name}, ${t(lead.role)}`} onClick={() => setView({ person: lead, area })} className="mt-4 block rounded-full transition-transform duration-200 ease-out-strong hover:scale-105 active:scale-95">
                         <Avatar person={lead} accent={area.accent} className="w-28 ring-4 ring-parchment" />
                       </button>
                       <p className="mt-4 text-2xl font-extrabold leading-tight">{lead.name}</p>
                       <p className="mt-1 text-parchment/85">{t(lead.role)}</p>
-                      {area.blurb && <p className="mt-4 border-t border-parchment/25 pt-4 text-sm leading-relaxed text-parchment/85">{t(area.blurb)}</p>}
+                      {area.blurb && <p className="mt-4 border-t border-parchment/25 pt-4 text-caption leading-relaxed text-parchment/85">{t(area.blurb)}</p>}
                     </div>
                   )}
                   {/* Equipo */}
@@ -132,7 +132,7 @@ export function Team({ content }: { content: TeamContent }) {
                     </button>
                   )}
                   <div>
-                    <p className="text-sm font-bold uppercase tracking-wide text-copper">{t(content.labels.lcp)}</p>
+                    <p className="text-caption font-bold uppercase tracking-wide text-copper">{t(content.labels.lcp)}</p>
                     {lcp && <p className="mt-1 text-2xl font-extrabold leading-tight">{lcp.name}</p>}
                     <p className="mt-2 text-parchment/85">{t(content.labels.pick)}</p>
                   </div>

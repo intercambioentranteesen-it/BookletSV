@@ -76,10 +76,10 @@ export function Closing({ content, credits = [] }: { content: ClosingContent; cr
             <ArrowUp aria-hidden="true" className="h-5 w-5" />
           </a>
         </div>
-        <p className="mt-8 max-w-xl text-sm text-parchment/80">{t(UI.confirm)}</p>
+        <p className="mt-8 max-w-xl text-caption text-parchment/80">{t(UI.confirm)}</p>
 
         {credits.length > 0 && (
-          <details className="mt-6 text-sm text-parchment/85">
+          <details className="mt-6 text-caption text-parchment/85">
             <summary className="inline-flex min-h-11 cursor-pointer items-center font-semibold underline underline-offset-4">{t(UI.photoCredits)}</summary>
             <ul role="list" className="mt-3 grid gap-x-8 gap-y-1 sm:grid-cols-2">
               {credits.map((c) => (

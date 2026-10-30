@@ -12,6 +12,7 @@ import type { SiteContent, ZoneId } from "@/types/content";
 import { CountryMap } from "./CountryMap";
 import { ExperienceCard } from "./ExperienceCard";
 import { ExperienceModal } from "./ExperienceModal";
+import { MapGuide } from "./MapGuide";
 
 const HASH = "#exp-";
 
@@ -121,6 +122,7 @@ export function ExploreCountry({ content }: { content: SiteContent["explore"] })
 
         {content.geo && (
           <div className="mt-10">
+            <MapGuide />
             <CountryMap zones={zones} experiences={experiences} geo={content.geo} activeZone={zoneId} onZone={zoneFromMap} onPick={pickFromMap} />
           </div>
         )}

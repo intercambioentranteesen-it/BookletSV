@@ -35,7 +35,7 @@ export function CalculatorArt({ display, codes, active }: { display: string; cod
       <div className={cn("absolute left-1/2 top-1/2 w-[13rem] -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ease-out-strong", active ? "rotate-0" : "-rotate-[5deg]")}>
         <div className="rounded-[1.6rem] border-2 border-parchment bg-parchment p-3 shadow-[8px_8px_0_0_rgba(0,0,0,0.25)]">
           <div className="rounded-xl bg-ink px-3 py-3 text-right">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-parchment/60">USD</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-parchment/80">USD</p>
             <p className="text-xl font-extrabold tabular-nums leading-tight text-copper">{display}</p>
           </div>
           <div className="mt-3 grid grid-cols-4 gap-2">

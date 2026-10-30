@@ -200,6 +200,9 @@ export interface Festival {
   title: L;
   where?: L;
   text: L;
+  /** Detalle extra: se muestra al abrir "Más detalles" (el resumen de `text` siempre está a la vista). */
+  details?: L;
+  /** Aviso importante (seguridad, cuidados): siempre visible, nunca dentro del desplegable. */
   notice?: L;
 }
 export interface FlavorsContent {

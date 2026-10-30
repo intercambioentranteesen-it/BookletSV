@@ -95,11 +95,11 @@ export function TransportModal({ open, onClose, content }: TransportModalProps) 
                   <div className="flex items-baseline justify-between gap-4">
                     <div>
                       <p className="text-lg font-extrabold">{t(tier.label)}</p>
-                      {tier.detail && <p className="text-sm text-graphite">{t(tier.detail)}</p>}
+                      {tier.detail && <p className="text-caption text-graphite">{t(tier.detail)}</p>}
                     </div>
                     <p className="shrink-0 bg-white pl-2 text-lg font-extrabold tabular-nums">
                       {rangeText(tier)}
-                      {tier.openEnded && <span className="block text-right text-sm font-normal text-graphite">{t(UI.moreWithDistance)}</span>}
+                      {tier.openEnded && <span className="block text-right text-caption font-normal text-graphite">{t(UI.moreWithDistance)}</span>}
                     </p>
                   </div>
                   <div aria-hidden="true" className="relative mt-3 h-3 rounded-full bg-sand">
@@ -123,9 +123,9 @@ export function TransportModal({ open, onClose, content }: TransportModalProps) 
               ))}
             </ul>
           </div>
-          <p className="self-end border-l-4 border-ink bg-sand p-3 text-sm leading-relaxed">{t(content.note)}</p>
+          <p className="self-end border-l-4 border-ink bg-sand p-3 text-caption leading-relaxed">{t(content.note)}</p>
         </div>
-        <p className="mt-6 text-sm text-graphite">{t(UI.confirm)}</p>
+        <p className="mt-6 text-caption text-graphite">{t(UI.confirm)}</p>
       </article>
     </Modal>
   );

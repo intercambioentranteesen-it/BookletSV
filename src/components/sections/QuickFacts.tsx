@@ -32,7 +32,7 @@ export function QuickFacts({ content }: { content: QuickFactsContent }) {
                 <Flag size="sm" decorative className="mt-[0.4rem]" />
               )}
               <div>
-                <dt className="text-sm text-graphite">{t(f.label)}</dt>
+                <dt className="text-caption text-graphite">{t(f.label)}</dt>
                 <dd className="font-bold leading-snug">{t(f.value)}</dd>
               </div>
             </motion.div>

@@ -160,7 +160,7 @@ export function CountryMap({ zones, experiences, geo, activeZone, onZone, onPick
 
         {/* Rótulos de contexto y ciudades (decorativos) */}
         {CONTEXT.map((c) => (
-          <span key={c.id} aria-hidden="true" className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[clamp(10px,1.9cqw,17px)] italic text-[#7A756C]" style={{ left: px(c.x), top: py(c.y) }}>
+          <span key={c.id} aria-hidden="true" className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[clamp(10px,1.9cqw,17px)] italic text-maplabel" style={{ left: px(c.x), top: py(c.y) }}>
             {t(c.text)}
           </span>
         ))}
@@ -170,8 +170,8 @@ export function CountryMap({ zones, experiences, geo, activeZone, onZone, onPick
             key={dep.id}
             aria-hidden="true"
             className={cn(
-              "pointer-events-none absolute hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[clamp(7px,1.15cqw,12px)] font-semibold uppercase tracking-[0.1em] transition-colors duration-200 sm:block",
-              hoverDept === dep.id ? "font-extrabold text-ink" : "text-[#9A9482]",
+              "pointer-events-none absolute hidden -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[clamp(8px,1.2cqw,12px)] font-bold uppercase tracking-[0.1em] transition-colors duration-200 md:block",
+              hoverDept === dep.id ? "font-extrabold text-ink" : "text-maplabel",
             )}
             style={{ left: px(dep.cx), top: py(dep.cy) }}
           >
@@ -206,7 +206,7 @@ export function CountryMap({ zones, experiences, geo, activeZone, onZone, onPick
           return (
             <div
               key={pt.id}
-              className={cn("absolute -translate-x-1/2 -translate-y-full transition-opacity duration-300", active ? "opacity-100" : "opacity-45 hover:opacity-100 focus-within:opacity-100")}
+              className={cn("absolute origin-bottom -translate-x-1/2 -translate-y-full transition-[opacity,transform] duration-300", active ? "opacity-100" : "scale-90 opacity-80 hover:scale-100 hover:opacity-100 focus-within:scale-100 focus-within:opacity-100")}
               style={{ left: px(pt.x), top: py(pt.y), zIndex: hover === pt.id || preview === pt.id ? 30 : active ? 20 : 10 }}
             >
               <motion.button
@@ -247,7 +247,7 @@ export function CountryMap({ zones, experiences, geo, activeZone, onZone, onPick
                   <path d="M22 54 C22 54 4 34 4 21 A18 18 0 1 1 40 21 C40 34 22 54 22 54 Z" fill={PIN_COLOR[zone.accent]} stroke="#fff" strokeWidth="3" strokeLinejoin="round" />
                   <circle cx="22" cy="21" r="11.5" fill="#fff" />
                 </svg>
-                <ShapeGlyph kind={zone.shape} className={cn("absolute left-1/2 top-[37.5%] h-[34%] w-[34%] -translate-x-1/2 -translate-y-1/2", ACCENT[zone.accent].text)} />
+                <ShapeGlyph kind={zone.shape} centered className={cn("absolute left-1/2 top-[37.5%] h-[34%] w-[34%] -translate-x-1/2 -translate-y-1/2", ACCENT[zone.accent].text)} />
               </motion.button>
             </div>
           );
@@ -262,7 +262,7 @@ export function CountryMap({ zones, experiences, geo, activeZone, onZone, onPick
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.15 }}
-                className="whitespace-nowrap rounded-control bg-ink px-3 py-2 text-center text-sm leading-tight text-parchment shadow-lg"
+                className="whitespace-nowrap rounded-control bg-ink px-3 py-2 text-center text-caption leading-tight text-parchment shadow-lg"
               >
                 <span className="block font-extrabold">{t(expById.get(hovered.id)!.title)}</span>
                 <span className="block text-parchment/80">{t(zoneById.get(expById.get(hovered.id)!.zone)!.name)}</span>
@@ -290,7 +290,7 @@ export function CountryMap({ zones, experiences, geo, activeZone, onZone, onPick
                 <ZoomPhoto src={previewExp.image} alt={t(previewExp.title)} accent={previewZone.accent} shape={previewZone.shape} onOpen={() => setZoom(true)} />
               </div>
               <div className="p-4">
-                <p className="flex items-center gap-2 text-sm font-bold text-graphite">
+                <p className="flex items-center gap-2 text-caption font-bold text-graphite">
                   <ShapeGlyph kind={previewZone.shape} className={cn("h-4 w-4", ACCENT[previewZone.accent].text)} />
                   {t(previewZone.name)}
                 </p>
@@ -325,9 +325,9 @@ export function CountryMap({ zones, experiences, geo, activeZone, onZone, onPick
         </AnimatePresence>
 
       {/* Leyenda: qué forma y color es cada zona */}
-      <ul aria-hidden="true" className="flex flex-wrap items-center gap-x-5 gap-y-1 border-t-2 border-line bg-parchment px-4 py-3 text-sm font-semibold">
+      <ul aria-hidden="true" className="flex flex-wrap items-center gap-x-5 gap-y-1 border-t-2 border-line bg-parchment px-4 py-3 text-caption font-semibold">
         {zones.map((z) => (
-          <li key={z.id} className={cn("flex items-center gap-2 transition-opacity", z.id === activeZone ? "opacity-100" : "opacity-55")}>
+          <li key={z.id} className={cn("flex items-center gap-2", z.id === activeZone ? "font-extrabold text-ink underline decoration-2 underline-offset-4" : "text-graphite")}>
             <ShapeGlyph kind={z.shape} className={cn("h-4 w-4", ACCENT[z.accent].text)} />
             {t(z.name)}
           </li>

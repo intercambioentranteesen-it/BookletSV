@@ -34,7 +34,7 @@ export function ExperienceCard({ exp, zone, onOpen }: ExperienceCardProps) {
           <p className="mt-2 text-graphite">{t(exp.hook)}</p>
           <ul role="list" className="mt-4 flex flex-wrap gap-2">
             {exp.tags.slice(0, 3).map((tag) => (
-              <li key={tag.en} className="rounded-full bg-sand px-3 py-1 text-sm font-bold">
+              <li key={tag.en} className="rounded-full bg-sand px-3 py-1 text-caption font-bold">
                 {t(tag)}
               </li>
             ))}

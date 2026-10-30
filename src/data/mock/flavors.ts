@@ -145,9 +145,10 @@ export const flavorsMock: FlavorsContent = {
       month: l("Aug", "Ago"),
       title: l("Fiestas Agostinas", "Fiestas Agostinas"),
       where: l("San Salvador", "San Salvador"),
-      text: l(
-        "In the first week of August the capital celebrates its patron saint. A marching band wakes the city at 4 a.m., followed by parades, sports, food and art.",
-        "En la primera semana de agosto la capital celebra a su patrono. Una banda despierta a la ciudad a las 4 a. m., y siguen desfiles, deportes, comida y arte.",
+      text: l("In the first week of August the capital celebrates its patron saint.", "En la primera semana de agosto la capital celebra a su patrono."),
+      details: l(
+        "A marching band wakes the city at 4 a.m., followed by parades, sports, food and art.",
+        "Una banda despierta a la ciudad a las 4 a. m., y siguen desfiles, deportes, comida y arte.",
       ),
     },
     {
@@ -157,8 +158,12 @@ export const flavorsMock: FlavorsContent = {
       title: l("Bolas de Fuego", "Bolas de Fuego"),
       where: l("Nejapa", "Nejapa"),
       text: l(
-        "Two teams throw flaming rag balls at each other on the main street. The tradition commemorates a volcanic eruption and more than 100 years of history.",
-        "Dos bandos se lanzan bolas de trapo encendidas en la calle principal. La tradición recuerda una erupción volcánica y tiene más de 100 años.",
+        "Two teams throw flaming rag balls at each other on the main street.",
+        "Dos bandos se lanzan bolas de trapo encendidas en la calle principal.",
+      ),
+      details: l(
+        "The tradition commemorates a volcanic eruption and has more than 100 years of history.",
+        "La tradición recuerda una erupción volcánica y tiene más de 100 años.",
       ),
       notice: l(
         "Local authorities advise against synthetic clothing and shorts, and against bringing children or older adults. Follow the instructions of emergency staff.",

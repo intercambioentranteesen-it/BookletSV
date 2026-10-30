@@ -7,6 +7,7 @@ import { Carousel } from "@/components/ui/Carousel";
 import { CountUp } from "@/components/ui/CountUp";
 import { Lightbox, type LightboxItem } from "@/components/ui/Lightbox";
 import { Modal } from "@/components/ui/Modal";
+import { Notice } from "@/components/ui/Notice";
 import { UI } from "@/data/ui";
 import { ACCENT } from "@/lib/accent";
 import { cn } from "@/lib/cn";
@@ -83,7 +84,7 @@ export function ExperienceModal({ exp, zone, onClose }: ExperienceModalProps) {
 
             <ul role="list" className="mt-4 flex flex-wrap gap-2">
               {shown.exp.tags.map((tag) => (
-                <li key={tag.en} className="rounded-full bg-sand px-3 py-1 text-sm font-bold">
+                <li key={tag.en} className="rounded-full bg-sand px-3 py-1 text-caption font-bold">
                   {t(tag)}
                 </li>
               ))}
@@ -104,24 +105,19 @@ export function ExperienceModal({ exp, zone, onClose }: ExperienceModalProps) {
                       <h4 className="text-xl font-extrabold leading-tight">{t(stop.name)}</h4>
                       <p className="leading-relaxed">{t(stop.what)}</p>
                       {stop.tip && (
-                        <p className="flex gap-2 text-sm text-graphite">
+                        <p className="flex gap-2 text-caption text-graphite">
                           <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-terra-deep" />
                           <span>{t(stop.tip)}</span>
                         </p>
                       )}
-                      {stop.notice && (
-                        <p className="border-l-4 border-ink bg-sand p-3 text-sm leading-relaxed">
-                          <span className="font-extrabold">{t(UI.goodToKnow)}. </span>
-                          {t(stop.notice)}
-                        </p>
-                      )}
+                      {stop.notice && <Notice>{t(stop.notice)}</Notice>}
                     </div>
                   </li>
                 ))}
               </Carousel>
             </div>
 
-            <p className="mt-6 text-sm text-graphite">{t(UI.confirm)}</p>
+            <p className="mt-6 text-caption text-graphite">{t(UI.confirm)}</p>
           </div>
         </article>
       )}
