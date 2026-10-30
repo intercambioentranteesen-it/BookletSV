@@ -15,7 +15,7 @@ import {
 import { useLang } from "@/lib/i18n";
 import type { MottoContent } from "@/types/content";
 import { CRACKS, HATCH, PEBBLES, PLATES, ROCK_OUTLINE, SPARKS, SPECKLES } from "./motto-art";
-import { OAK_CROWN_BASE, OAK_CROWN_STRIPES, OAK_LEAVES, OAK_PATTERNS, OAK_WOOD } from "./team/oak-logo";
+import { OAK_LEAVES, OAK_WOOD } from "./team/oak-logo";
 
 /**
  * "Convirtiendo rocas en oro", en bucle. Un solo reloj (t, en segundos) recorre un ciclo completo y cada pieza
@@ -51,10 +51,6 @@ const OAK = { s: 0.34, x: 292 - 512 * 0.34, y: 216 - 624 * 0.34 };
 const OAK_TONES = ["#FFE48A", "#F4CC4C", "#E2AA2C", "#C98E1A"]; // de luz (arriba-izquierda) a sombra (abajo-derecha)
 const OAK_WOOD_COLOR = "#C98E1A";
 const OAK_WOOD_SHADE = "#8E5E0C";
-// Los patrones del logo se renombran para no chocar con los del árbol del organigrama (los ids son globales en la página)
-const OAK_PATTERNS_GOLD = OAK_PATTERNS.replace(/_10_lpp_30_/g, "_motto_lpp_").replace(/#f4f3f0/g, "#FFF0B0");
-const stripeFill = (pattern: string) => `url(#${pattern.replace("_10_lpp_30_", "_motto_lpp_")})`;
-
 // Cada hoja: su color según dónde está en la copa y el momento en que brota (de abajo hacia arriba, como crece el árbol)
 const TREE_LEAVES = OAK_LEAVES.map(([d, cx, cy]) => {
   const light = (((cx - 512) / 290) * 0.45 + ((cy - 300) / 170) * 0.75 + 1) / 2 + (((cx * 7 + cy * 13) % 10) / 10 - 0.5) * 0.14;
@@ -62,7 +58,6 @@ const TREE_LEAVES = OAK_LEAVES.map(([d, cx, cy]) => {
 });
 const LEAF_MIN = Math.min(...TREE_LEAVES.map((l) => l.delay));
 const LEAF_MAX = Math.max(...TREE_LEAVES.map((l) => l.delay));
-const CROWN_AT = 4.3;
 
 const PALETTE = {
   black: { base: "#1A1A1A", hatch: "#0A0A0A", crack: "#0B0B0B", edge: "#0A0A0A" },
@@ -122,21 +117,6 @@ function OakLeaf({ t, leaf }: { t: MotionValue<number>; leaf: (typeof TREE_LEAVE
   return <motion.path d={leaf.d} fill={leaf.fill} style={{ scale, ...baseStyle }} />;
 }
 
-/** La corona de tres hojas rayadas del logo. */
-function OakCrown({ t }: { t: MotionValue<number> }) {
-  const scale = useWindow(t, CROWN_AT, CROWN_AT + 0.5, T.hold - 0.1, T.hold + 0.3);
-  return (
-    <motion.g style={{ scale, ...baseStyle }}>
-      {OAK_CROWN_BASE.map((d, i) => (
-        <path key={i} d={d} fill={OAK_WOOD_COLOR} />
-      ))}
-      {OAK_CROWN_STRIPES.map((c, i) => (
-        <path key={i} d={c.d} fill={stripeFill(c.pattern)} />
-      ))}
-    </motion.g>
-  );
-}
-
 /** Tronco y ramas del logo (una sola pieza): se revelan de abajo hacia arriba con un recorte que sube. Las manos del logo no se dibujan. */
 function OakWood({ t }: { t: MotionValue<number> }) {
   const p = useWindow(t, T.trunk[0], T.trunk[1], T.hold + 0.7, T.hold + 1.1);
@@ -177,7 +157,6 @@ function Scene({ t }: { t: MotionValue<number> }) {
   const radius = useTransform(t, [0, T.wave[0], T.wave[1], T.waveOut[0], T.waveOut[1], CYCLE], [0, 0, 235, 235, 0, 0], { ease: OUT });
   return (
     <>
-      <defs dangerouslySetInnerHTML={{ __html: OAK_PATTERNS_GOLD }} />
       <defs>
         <clipPath id="motto-rock">
           <path d={ROCK_OUTLINE} />
@@ -213,13 +192,12 @@ function Scene({ t }: { t: MotionValue<number> }) {
         </g>
       </g>
 
-      {/* El roble del logo de Alchemist, de oro: tronco y ramas, sus hojas (de abajo hacia arriba) y la corona */}
+      {/* El roble del logo de Alchemist, de oro: tronco y ramas, y sus hojas (de abajo hacia arriba) */}
       <g transform={`translate(${OAK.x} ${OAK.y}) scale(${OAK.s})`}>
         <OakWood t={t} />
         {TREE_LEAVES.map((l, i) => (
           <OakLeaf key={i} t={t} leaf={l} />
         ))}
-        <OakCrown t={t} />
       </g>
 
       {/* Destellos */}
