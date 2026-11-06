@@ -32,7 +32,7 @@ export interface Stop {
   name: L;
   what: L;
   tip?: L;
-  /** Aviso destacado (p. ej. sitios de memoria). */
+  details?: L;
   notice?: L;
   image?: string;
   credit?: string;
