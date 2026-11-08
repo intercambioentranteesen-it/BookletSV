@@ -4,11 +4,14 @@ const l = (en: string, es: string): L => ({ en, es });
 const same = (v: string): L => ({ en: v, es: v });
 
 export const flavorsMock: FlavorsContent = {
-  title: l("Flavors and traditions", "Sabores y tradiciones"),
+title: l(
+  "Our culture",
+  "Nuestra cultura"
+),
   intro: l(
-    "Corn is the base of most of what you will eat here, and almost every month has a celebration.",
-    "El maíz es la base de casi todo lo que vas a comer aquí, y casi todos los meses hay una celebración.",
-  ),
+  "Discover the stories, traditions and flavors that make El Salvador unique.",
+  "Descubre las historias, tradiciones y sabores que hacen único a El Salvador."
+),
   cultureTitle: l(
   "Stories and folklore",
   "Leyendas e historias salvadoreñas"
@@ -63,8 +66,10 @@ stories: [
     accent: "copper",
   },
 ],
-  dishesTitle: l("What to eat", "Qué comer"),
-  dishes: [
+dishesTitle: l(
+  "Flavors of El Salvador",
+  "Sabores de El Salvador"
+),  dishes: [
     {
       id: "pupusas",
       name: same("Pupusas"),
@@ -155,8 +160,10 @@ stories: [
       shape: "quarter",
     },
   ],
-  festivalsTitle: l("A year of celebrations", "Un año de celebraciones"),
-  festivalsIntro: l(
+festivalsTitle: l(
+  "Traditions and celebrations",
+  "Tradiciones y celebraciones"
+),  festivalsIntro: l(
     "Dates can shift from year to year. Ask your buddy what is happening in the town where you live.",
     "Las fechas pueden cambiar de un año a otro. Pregúntale a tu buddy qué hay en el pueblo donde vivas.",
   ),
