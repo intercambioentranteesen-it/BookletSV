@@ -205,6 +205,14 @@ export interface Festival {
   /** Aviso importante (seguridad, cuidados): siempre visible, nunca dentro del desplegable. */
   notice?: L;
 }
+export interface CultureStory {
+  id: string;
+  name: L;
+  category: L;
+  summary: L;
+  details: L;
+  accent: ZoneAccent;
+}
 export interface FlavorsContent {
   title: L;
   intro: L;
