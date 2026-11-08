@@ -104,6 +104,27 @@ export function ExperienceModal({ exp, zone, onClose }: ExperienceModalProps) {
                       </div>
                       <h4 className="text-xl font-extrabold leading-tight">{t(stop.name)}</h4>
                       <p className="leading-relaxed">{t(stop.what)}</p>
+                      {stop.details && (
+  <details className="group border-t border-line pt-3">
+    <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 font-bold text-terra-deep [&::-webkit-details-marker]:hidden">
+      <span>
+        {t({
+          en: "Discover its story",
+          es: "Conoce su historia",
+        })}
+      </span>
+
+      <ChevronDown
+        aria-hidden="true"
+        className="h-5 w-5 shrink-0 transition-transform duration-200 group-open:rotate-180"
+      />
+    </summary>
+
+    <p className="pb-2 text-sm leading-relaxed text-graphite">
+      {t(stop.details)}
+    </p>
+  </details>
+)}
                       {stop.tip && (
                         <p className="flex gap-2 text-caption text-graphite">
                           <Info aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-terra-deep" />
