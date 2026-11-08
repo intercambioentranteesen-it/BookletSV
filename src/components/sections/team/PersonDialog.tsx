@@ -33,7 +33,7 @@ export function PersonDialog({ view, onClose }: { view: PersonView | null; onClo
             <X aria-hidden="true" className="h-5 w-5" />
           </button>
           <div className="grid items-center gap-8 sm:grid-cols-[14rem_1fr]">
-            <Avatar person={view.person} accent={view.area?.accent ?? "charcoal"} className="mx-auto w-48 ring-4 ring-white shadow-lg sm:w-56" />
+            <Avatar person={view.person} accent={view.area?.accent ?? "charcoal"} seal className="mx-auto w-48 ring-4 ring-white shadow-lg sm:w-56" />
             <div className="text-center sm:text-left">
               {view.area && (
                 <p className="flex items-center justify-center gap-2 font-bold text-graphite sm:justify-start">

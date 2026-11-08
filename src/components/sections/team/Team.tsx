@@ -99,7 +99,7 @@ export function Team({ content }: { content: TeamContent }) {
                     <div className="rounded-card bg-ink p-6 text-parchment">
                       <p className="text-caption font-bold uppercase tracking-wide text-copper">{t(content.labels.lcvp)}</p>
                       <button type="button" aria-haspopup="dialog" aria-label={`${lead.name}, ${t(lead.role)}`} onClick={() => setView({ person: lead, area })} className="mt-4 block rounded-full transition-transform duration-200 ease-out-strong hover:scale-105 active:scale-95">
-                        <Avatar person={lead} accent={area.accent} className="w-28 ring-4 ring-parchment" />
+                        <Avatar person={lead} accent={area.accent} seal className="w-28 ring-4 ring-parchment" />
                       </button>
                       <p className="mt-4 text-2xl font-extrabold leading-tight">{lead.name}</p>
                       <p className="mt-1 text-parchment/85">{t(lead.role)}</p>
@@ -128,7 +128,7 @@ export function Team({ content }: { content: TeamContent }) {
                 <div className="flex flex-col items-center gap-5 rounded-card bg-ink p-6 text-center text-parchment sm:flex-row sm:text-left">
                   {lcp && (
                     <button type="button" aria-haspopup="dialog" aria-label={`${lcp.name}, ${t(lcp.role)}`} onClick={() => setView({ person: lcp, note: t(content.labels.lcp) })} className="shrink-0 rounded-full transition-transform duration-200 ease-out-strong hover:scale-105 active:scale-95">
-                      <Avatar person={lcp} accent="charcoal" className="w-28 ring-4 ring-parchment" />
+                      <Avatar person={lcp} accent="charcoal" seal className="w-28 ring-4 ring-parchment" />
                     </button>
                   )}
                   <div>
