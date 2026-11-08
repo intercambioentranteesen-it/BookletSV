@@ -216,8 +216,14 @@ export interface CultureStory {
 export interface FlavorsContent {
   title: L;
   intro: L;
+
+  cultureTitle: L;
+  cultureIntro: L;
+  stories: CultureStory[];
+
   dishesTitle: L;
   dishes: Dish[];
+
   festivalsTitle: L;
   festivalsIntro: L;
   festivals: Festival[];
