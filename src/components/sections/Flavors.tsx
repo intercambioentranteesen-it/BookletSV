@@ -113,6 +113,55 @@ export function Flavors({ content }: { content: FlavorsContent }) {
           {t(content.title)}
         </h2>
         <p className="mt-4 max-w-2xl text-xl leading-relaxed text-graphite">{t(content.intro)}</p>
+        {/* Cultura: leyendas e historias */}
+<section className="mt-12" aria-labelledby="culture-stories-title">
+  <h3
+    id="culture-stories-title"
+    className="text-2xl font-extrabold"
+  >
+    {t(content.cultureTitle)}
+  </h3>
+
+  <p className="mt-2 max-w-2xl text-graphite">
+    {t(content.cultureIntro)}
+  </p>
+
+  <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    {content.stories.map((story) => (
+      <details
+        key={story.id}
+        className="group flex flex-col rounded-card border-2 border-line bg-white p-5"
+      >
+        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 [&::-webkit-details-marker]:hidden">
+          <div>
+            <p className="text-caption font-bold text-terra-deep">
+              {t(story.category)}
+            </p>
+
+            <h4 className="mt-1 text-xl font-extrabold">
+              {t(story.name)}
+            </h4>
+          </div>
+
+          <ChevronDown
+            aria-hidden="true"
+            className="h-5 w-5 shrink-0 text-graphite transition-transform duration-200 group-open:rotate-180"
+          />
+        </summary>
+
+        <p className="mt-3 leading-relaxed text-graphite">
+          {t(story.summary)}
+        </p>
+
+        <div className="mt-3 border-t border-line pt-3">
+          <p className="text-sm leading-relaxed text-graphite">
+            {t(story.details)}
+          </p>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
 
         <div className="mt-12">
           <Carousel
