@@ -37,10 +37,21 @@ export function Carousel({ heading, prevLabel, nextLabel, children }: CarouselPr
   }, [update]);
 
   const go = (dir: 1 | -1) => {
-    const el = ref.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * el.clientWidth * 0.85, behavior: reduce ? "auto" : "smooth" });
-  };
+  const el = ref.current;
+  if (!el) return;
+
+  const firstCard = el.querySelector("li");
+  if (!firstCard) return;
+
+  const styles = window.getComputedStyle(el);
+  const gap = parseFloat(styles.columnGap) || 0;
+  const distance = firstCard.getBoundingClientRect().width + gap;
+
+  el.scrollBy({
+    left: dir * distance,
+    behavior: reduce ? "auto" : "smooth",
+  });
+};
 
   const overflowing = !(edge.start && edge.end);
   const btn =

@@ -19,7 +19,7 @@ const OPTICAL: Record<ShapeKind, { x: number; y: number }> = {
 const BADGE: Record<ShapeKind, { x: number; y: number; size: number }> = {
   triangle: { x: 50, y: 66, size: 0.38 },
   circle: { x: 50, y: 50, size: 0.52 },
-  rect: { x: 50, y: 50, size: 0.4 },
+  rect: { x: 50, y: 50, size: 0.42 },
   quarter: { x: 43.5, y: 56.5, size: 0.46 },
 };
 
@@ -38,7 +38,7 @@ export function ShapeGlyph({ kind, className, centered = false }: { kind: ShapeK
     <svg viewBox="0 0 100 100" aria-hidden="true" className={className} style={style} fill="currentColor">
       {kind === "triangle" && <polygon points="50,8 94,92 6,92" />}
       {kind === "circle" && <circle cx="50" cy="50" r="44" />}
-      {kind === "rect" && <rect x="22" y="8" width="56" height="84" />}
+      {kind === "rect" && <rect x="8" y="8" width="84" height="84" />}
       {kind === "quarter" && <path d="M8 92 V8 A84 84 0 0 1 92 92 Z" />}
     </svg>
   );
