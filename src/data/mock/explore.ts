@@ -87,6 +87,10 @@ export const experiencesMock: Experience[] = [
           "The most visited surf beach in the country, with a lively promenade, good waves and sunsets. El Sunzal is the quieter neighbor, great for the sea breeze.",
           "La playa de surf más visitada del país, con paseo animado, buenas olas y atardeceres. El Sunzal es su vecina más tranquila, ideal para la brisa del mar.",
         ),
+        details: l(
+          "El Tunco takes its name from a rock formation that resembles a pig. Over time, the beach became one of El Salvador's best-known surf destinations, attracting visitors, local businesses and a lively international community. El Sunzal, nearby, is known for its long right-hand wave and a quieter atmosphere.",
+          "El Tunco debe su nombre a una formación rocosa que recuerda a un cerdo. Con el tiempo, la playa se convirtió en uno de los destinos de surf más conocidos de El Salvador, atrayendo visitantes, negocios locales y una comunidad internacional. El Sunzal, a poca distancia, es conocido por su larga ola derecha y un ambiente más tranquilo.",
+        ),
         tip: l("Nights and weekends are busy and social.", "Las noches y los fines de semana son animados y sociales."),
       },
       {
@@ -96,6 +100,10 @@ export const experiencesMock: Experience[] = [
         what: l(
           "A trek through coffee plants and forest ends at natural pools and waterfalls. The descent is steep.",
           "Una caminata entre cafetales y bosque que termina en pozas y cascadas. El descenso es empinado.",
+        ),
+        details: l(
+          "Tamanique is a mountain town whose landscape reflects the rural side of La Libertad. Its waterfalls are reached by trails through green hills and agricultural land. The journey is part of the experience: visitors get to see a side of the coast that goes beyond beaches and surfing.",
+          "Tamanique es un pueblo de montaña cuyo paisaje refleja el lado rural de La Libertad. Sus cascadas se alcanzan por senderos entre colinas verdes y terrenos agrícolas. El recorrido también es parte de la experiencia: permite conocer una faceta de la costa que va más allá de las playas y el surf.",
         ),
         tip: l(
           "Go with a local guide. A hiking pole helps if your knees are sensitive.",
@@ -109,6 +117,10 @@ export const experiencesMock: Experience[] = [
         what: l(
           "A wide seaside walk with fresh fish, seafood stalls and plenty of local atmosphere.",
           "Un amplio malecón con pescado fresco, mariscos y mucho ambiente local.",
+        ),
+        details: l(
+          "For generations, La Libertad has been closely connected to fishing and life by the Pacific Ocean. Its pier and surrounding market have traditionally brought together local fishermen, seafood vendors and visitors. Today, the Malecón blends that coastal identity with a renewed tourism scene, making it a place to experience both the everyday life and changing face of El Salvador's coastline.",
+          "Durante generaciones, La Libertad ha estado estrechamente vinculada con la pesca y la vida junto al océano Pacífico. Su muelle y el mercado de sus alrededores han reunido tradicionalmente a pescadores, vendedores de mariscos y visitantes. Hoy, el Malecón combina esa identidad costera con una renovada oferta turística, permitiendo conocer tanto la vida cotidiana como la transformación de la costa salvadoreña.",
         ),
         tip: l("You can get there by public bus from San Salvador.", "Se llega en bus desde San Salvador."),
       },
@@ -134,6 +146,10 @@ export const experiencesMock: Experience[] = [
           "Las Flores has a world-class right-hand wave framed by rocky cliffs. A few kilometers away, El Cuco is a calm fishing-village beach, good for families.",
           "Las Flores tiene una ola derecha de calidad mundial entre farallones. A pocos kilómetros, El Cuco es una playa tranquila de pueblo pescador, buena para familias.",
         ),
+        details: l(
+          "Playa Las Flores is one of the most recognized surf destinations in eastern El Salvador. Its long, consistent right-hand point break attracts surfers from around the world, while the surrounding coastline remains closely connected to fishing and rural communities. Beyond surfing, the area offers a quieter way to experience the Pacific, with beautiful coastal scenery and a slower pace of life.",
+          "Playa Las Flores es uno de los destinos de surf más reconocidos del oriente de El Salvador. Su larga y constante ola derecha atrae a surfistas de distintas partes del mundo, mientras que la costa que la rodea mantiene una estrecha conexión con las comunidades pesqueras y rurales. Más allá del surf, la zona ofrece una forma más tranquila de disfrutar el Pacífico, con paisajes costeros y un ritmo de vida más pausado.",
+        ),
         tip: l("Buses run from San Miguel to El Cuco in about an hour.", "Hay buses de San Miguel a El Cuco en cerca de una hora."),
       },
       {
@@ -143,6 +159,10 @@ export const experiencesMock: Experience[] = [
         what: l(
           "About 10 km of flat white sand in Usulután, inside the Jiquilisco Bay Ramsar site. Quiet on weekdays, lively on weekends.",
           "Unos 10 km de arena blanca y plana en Usulután, dentro del sitio Ramsar Bahía de Jiquilisco. Tranquila entre semana, animada los fines de semana.",
+        ),
+        details: l(
+          "Playa El Espino is one of the longest beaches in El Salvador, located in the department of Usulután. Its wide coastline, warm waters and palm-lined landscapes make it a popular destination for families and visitors looking for a relaxed beach experience. Fishing and local commerce are also part of the area's identity, connecting tourism with the everyday life of coastal communities.",
+          "Playa El Espino es una de las playas más extensas de El Salvador y se encuentra en el departamento de Usulután. Su amplia costa, aguas cálidas y paisajes rodeados de palmeras la convierten en un destino popular para familias y visitantes que buscan disfrutar de la playa con tranquilidad. La pesca y el comercio local también forman parte de la identidad de la zona, conectando el turismo con la vida cotidiana de las comunidades costeras.",
         ),
         tip: l(
           "Bus route 302 from San Salvador goes to Usulután (about $1.54 reported).",
@@ -156,6 +176,10 @@ export const experiencesMock: Experience[] = [
         what: l(
           "In La Unión: dark sand, rock pools and calm water. Playitas faces Conchagua volcano and Conchagüita island, with fresh seafood under beach huts.",
           "En La Unión: arena oscura, piscinas naturales y mar tranquilo. Playitas mira al volcán de Conchagua y la isla Conchagüita, con mariscos frescos en ramadas.",
+        ),
+        details: l(
+          "Located in the Gulf of Fonseca, Playas Negras is known for its distinctive dark volcanic sand and rocky coastal formations. The landscape reflects El Salvador's volcanic origins and creates a striking contrast with the Pacific's blue waters. Its quieter surroundings offer visitors a chance to explore a less urbanized stretch of the eastern coastline.",
+          "Ubicada en el Golfo de Fonseca, Playas Negras es conocida por su característica arena volcánica oscura y sus formaciones rocosas junto al mar. Su paisaje refleja el origen volcánico de El Salvador y crea un contraste particular con las aguas azules del Pacífico. Sus alrededores más tranquilos permiten explorar una zona menos urbanizada de la costa oriental.",
         ),
         tip: l("Tamarindo and El Maculís are nearby, with calm water for swimming.", "Tamarindo y El Maculís están cerca, con aguas calmadas para nadar."),
       },
@@ -181,6 +205,10 @@ export const experiencesMock: Experience[] = [
           "Boat tours leave from La Unión’s main pier to islands like Meanguera del Golfo and Conchagüita.",
           "Los tours en lancha salen del muelle principal de La Unión hacia islas como Meanguera del Golfo y Conchagüita.",
         ),
+        details: l(
+          "The Gulf of Fonseca is a shared maritime region bordered by El Salvador, Honduras and Nicaragua. Its Salvadoran islands, including Meanguera and Zacatillo, are known for their fishing communities, quiet beaches and volcanic landscapes. Life here follows the rhythm of the sea, and boat trips offer a closer look at the region's biodiversity and coastal traditions.",
+          "El Golfo de Fonseca es una región marítima compartida por El Salvador, Honduras y Nicaragua. Sus islas salvadoreñas, entre ellas Meanguera y Zacatillo, destacan por sus comunidades pesqueras, playas tranquilas y paisajes de origen volcánico. Aquí la vida sigue el ritmo del mar, y los recorridos en lancha permiten conocer más de cerca la biodiversidad y las tradiciones costeras de la zona.",
+        ),
         tip: l(
           "Public boats are limited. Arrange a tour or ask your hotel.",
           "Las lanchas públicas son limitadas. Coordina un tour o pregunta en tu hotel.",
@@ -194,6 +222,10 @@ export const experiencesMock: Experience[] = [
           "Above 1,200 m, Espíritu de la Montaña looks over the Gulf of Fonseca and the mountains of Honduras and Nicaragua. You can camp and watch the sunrise.",
           "A más de 1,200 m, Espíritu de la Montaña mira al Golfo de Fonseca y las montañas de Honduras y Nicaragua. Se puede acampar y ver el amanecer.",
         ),
+        details: l(
+          "Volcano Conchagua rises above the Gulf of Fonseca in southeastern El Salvador. Its elevated viewpoints offer remarkable views of the gulf, its islands and the neighboring countries of Honduras and Nicaragua. The area is also home to rural communities whose lives are closely connected to agriculture and the surrounding natural environment.",
+          "El volcán de Conchagua se eleva sobre el Golfo de Fonseca, en el sureste de El Salvador. Sus miradores ofrecen vistas impresionantes del golfo, sus islas y los países vecinos de Honduras y Nicaragua. La zona también alberga comunidades rurales cuya vida está estrechamente vinculada con la agricultura y el entorno natural.",
+        ),
         tip: l("Expect wind and cooler air at the top.", "Espera viento y aire más fresco en la cima."),
       },
       {
@@ -203,6 +235,10 @@ export const experiencesMock: Experience[] = [
         what: l(
           "Mangrove channels, islands and sunsets in Usulután, reached by boat from Puerto El Triunfo.",
           "Canales de manglar, islas y atardeceres en Usulután, a los que se llega en lancha desde Puerto El Triunfo.",
+        ),
+        details: l(
+          "Jiquilisco Bay is one of El Salvador's most important coastal ecosystems and a UNESCO Biosphere Reserve. Its mangrove forests, estuaries and islands provide habitats for many species, including sea turtles and migratory birds. Local communities have a long relationship with these waters through fishing, shellfish gathering and conservation initiatives.",
+          "La Bahía de Jiquilisco es uno de los ecosistemas costeros más importantes de El Salvador y forma parte de una Reserva de Biosfera reconocida por la UNESCO. Sus manglares, esteros e islas sirven de hábitat para numerosas especies, entre ellas tortugas marinas y aves migratorias. Las comunidades locales mantienen una relación histórica con estas aguas mediante la pesca, la recolección de mariscos y proyectos de conservación.",
         ),
         tip: l("Combine it with Playa El Espino on the same day.", "Combínala con Playa El Espino el mismo día."),
       },
@@ -230,6 +266,10 @@ export const experiencesMock: Experience[] = [
           "Known for its food festival, with local dishes in the main square.",
           "Conocido por su feria gastronómica, con platillos típicos en el parque central.",
         ),
+                details: l(
+          "Juayúa is part of El Salvador's Ruta de las Flores, a region known for its mountain scenery, coffee-growing heritage and colorful towns. Its name comes from Nahuat, reflecting the Indigenous linguistic heritage that remains part of the country's place names. The town is especially known for its weekend food festival, where visitors can discover traditional Salvadoran dishes and local flavors.",
+          "Juayúa forma parte de la Ruta de las Flores, una región reconocida por sus paisajes montañosos, su tradición cafetalera y sus pueblos llenos de color. Su nombre tiene raíces náhuat, reflejo del patrimonio lingüístico indígena que permanece en muchos nombres de lugares del país. El pueblo es especialmente conocido por su festival gastronómico de fin de semana, donde se pueden descubrir platillos tradicionales y sabores locales.",
+        ),
         tip: l("Confirm festival dates before you go.", "Confirma las fechas de la feria antes de ir."),
       },
       {
@@ -240,6 +280,10 @@ export const experiencesMock: Experience[] = [
           "A bohemian town known for its colorful murals, crafts and cafés.",
           "Un pueblo bohemio conocido por sus murales coloridos, artesanías y cafés.",
         ),
+                details: l(
+          "Concepción de Ataco is a mountain town in the western highlands, known for its murals, colorful streets and coffee culture. Its architecture and traditions reflect layers of local history, while its artisan workshops preserve techniques passed down through generations. Walking through Ataco offers a glimpse into the everyday culture of El Salvador's highland communities.",
+          "Concepción de Ataco es un pueblo de montaña ubicado en el occidente del país, conocido por sus murales, calles coloridas y cultura cafetalera. Su arquitectura y tradiciones reflejan distintas etapas de la historia local, mientras que sus talleres artesanales conservan técnicas transmitidas entre generaciones. Recorrer Ataco permite acercarse a la vida cotidiana y la cultura de las comunidades de las tierras altas salvadoreñas.",
+        ),
       },
       {
         id: "coffee-springs",
@@ -247,6 +291,10 @@ export const experiencesMock: Experience[] = [
         what: l(
           "Tour a coffee farm near Apaneca, the country’s second-highest town, then relax in thermal pools.",
           "Recorre una finca de café cerca de Apaneca, la segunda ciudad más alta del país, y relájate en aguas termales.",
+        ),
+                details: l(
+          "El Salvador's coffee heritage is closely tied to its volcanic highlands, where altitude, climate and fertile soils create favorable growing conditions. Coffee became a major part of the country's economy and shaped the development of many rural communities. Visiting a coffee farm offers a look at the process behind each cup, from cultivating and harvesting the cherries to processing and roasting the beans.",
+          "La tradición cafetalera de El Salvador está estrechamente ligada a sus tierras altas de origen volcánico, donde la altitud, el clima y los suelos fértiles favorecen el cultivo. El café llegó a convertirse en una parte importante de la economía nacional e influyó en el desarrollo de numerosas comunidades rurales. Visitar una finca permite conocer el proceso detrás de cada taza, desde el cultivo y la recolección de las cerezas hasta el procesamiento y tostado de los granos.",
         ),
         tip: l(
           "Many day tours combine Ataco, a coffee farm and hot springs.",

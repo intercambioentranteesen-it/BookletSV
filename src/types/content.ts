@@ -31,8 +31,8 @@ export interface Stop {
   id: string;
   name: L;
   what: L;
-  tip?: L;
   details?: L;
+  tip?: L;
   notice?: L;
   image?: string;
   credit?: string;

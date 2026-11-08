@@ -49,7 +49,7 @@ function FestivalItem({ f }: { f: Festival }) {
   return (
     <motion.li variants={fadeUp(16, 0.5)} className="flex list-none flex-col gap-4 rounded-card border-2 border-line bg-white p-5">
       {/* Fecha + nombre arriba; el texto, el detalle y el aviso van debajo con todo el ancho (en celular el texto no queda apretado) */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 sm:gap-5">
         <div className="grid h-[4.5rem] w-[4.5rem] shrink-0 place-content-center rounded-control bg-ink text-center text-parchment">
           {f.day ? (
             <>
@@ -61,7 +61,9 @@ function FestivalItem({ f }: { f: Festival }) {
           )}
         </div>
         <div className="min-w-0">
-          <h4 className="text-xl font-extrabold leading-tight">{t(f.title)}</h4>
+          <h4 className="text-lg font-extrabold leading-tight sm:text-xl">
+            {t(f.title)}
+          </h4>
           {f.where && <p className="font-semibold text-terra-deep">{t(f.where)}</p>}
         </div>
       </div>
@@ -106,6 +108,7 @@ function FestivalItem({ f }: { f: Festival }) {
 
 export function Flavors({ content }: { content: FlavorsContent }) {
   const { t } = useLang();
+  const [openStoryId, setOpenStoryId] = useState<string | null>(null);
   return (
     <section id="flavors" aria-labelledby="flavors-title" className="bg-sand py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
@@ -126,41 +129,58 @@ export function Flavors({ content }: { content: FlavorsContent }) {
     {t(content.cultureIntro)}
   </p>
 
-  <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-    {content.stories.map((story) => (
-      <details
+  <div className="mt-6 grid items-start gap-4 md:grid-cols-2 lg:grid-cols-3">
+  {content.stories.map((story) => {
+    const isOpen = openStoryId === story.id;
+
+    return (
+      <div
         key={story.id}
-        className="group flex flex-col rounded-card border-2 border-line bg-white p-5"
+        className={cn(
+          "relative self-start rounded-card border-2 border-line bg-white p-5",
+          isOpen && "z-30"
+        )}
       >
-        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 [&::-webkit-details-marker]:hidden">
-          <div>
-            <p className="text-caption font-bold text-terra-deep">
-              {t(story.category)}
-            </p>
+        <p className="text-caption font-bold text-terra-deep">
+          {t(story.category)}
+        </p>
 
-            <h4 className="mt-1 text-xl font-extrabold">
-              {t(story.name)}
-            </h4>
-          </div>
-
-          <ChevronDown
-            aria-hidden="true"
-            className="h-5 w-5 shrink-0 text-graphite transition-transform duration-200 group-open:rotate-180"
-          />
-        </summary>
+        <h4 className="mt-1 text-xl font-extrabold">
+          {t(story.name)}
+        </h4>
 
         <p className="mt-3 leading-relaxed text-graphite">
           {t(story.summary)}
         </p>
 
-        <div className="mt-3 border-t border-line pt-3">
-          <p className="text-sm leading-relaxed text-graphite">
-            {t(story.details)}
-          </p>
-        </div>
-      </details>
-    ))}
-  </div>
+        <button
+          type="button"
+          aria-expanded={isOpen}
+          onClick={() => setOpenStoryId(isOpen ? null : story.id)}
+          className="mt-3 flex min-h-11 items-center gap-2 font-bold text-terra-deep"
+        >
+          {t(isOpen ? UI.lessDetails : UI.moreDetails)}
+
+          <ChevronDown
+            aria-hidden="true"
+            className={cn(
+              "h-5 w-5 transition-transform duration-200",
+              isOpen && "rotate-180"
+            )}
+          />
+        </button>
+
+        {isOpen && (
+          <div className="absolute left-0 top-full z-50 w-full rounded-card border-2 border-line bg-white p-5 shadow-xl">
+            <p className="text-sm leading-relaxed text-graphite">
+              {t(story.details)}
+            </p>
+          </div>
+        )}
+      </div>
+    );
+  })}
+</div>
 </section>
 
         <div className="mt-12">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Info, X } from "lucide-react";
+import { Info, X, ChevronDown } from "lucide-react";
 import { ZoomPhoto } from "@/components/brand/ZoomPhoto";
 import { Carousel } from "@/components/ui/Carousel";
 import { CountUp } from "@/components/ui/CountUp";
