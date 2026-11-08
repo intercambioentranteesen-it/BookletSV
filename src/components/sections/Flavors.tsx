@@ -171,7 +171,7 @@ export function Flavors({ content }: { content: FlavorsContent }) {
         </button>
 
         {isOpen && (
-          <div className="absolute left-0 top-full z-50 w-full rounded-card border-2 border-line bg-white p-5 shadow-xl">
+          <div className="mt-4 pt-4 border-t border-line">
             <p className="text-sm leading-relaxed text-graphite">
               {t(story.details)}
             </p>
