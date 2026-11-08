@@ -10,7 +10,7 @@ export const UI = {
     explore: l("Explore", "Explora"),
     cost: l("Costs", "Costos"),
     journey: l("Your experience", "Tu experiencia"),
-    flavors: l("Flavors", "Sabores"),
+    flavors: l("Culture", "Nuestra cultura"),    
     goals: l("Goals", "Objetivos"),
     team: l("About us", "Nosotros"),
     label: l("Main", "Principal"),
