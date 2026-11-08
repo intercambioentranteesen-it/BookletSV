@@ -9,6 +9,60 @@ export const flavorsMock: FlavorsContent = {
     "Corn is the base of most of what you will eat here, and almost every month has a celebration.",
     "El maíz es la base de casi todo lo que vas a comer aquí, y casi todos los meses hay una celebración.",
   ),
+  cultureTitle: l(
+  "Stories and folklore",
+  "Leyendas e historias salvadoreñas"
+),
+
+cultureIntro: l(
+  "Every country has stories that live through generations. Discover the legends, traditions and memories that shape Salvadoran identity.",
+  "Cada país tiene historias que pasan de generación en generación. Descubre las leyendas, tradiciones y memorias que forman parte de la identidad salvadoreña."
+),
+
+stories: [
+  {
+    id: "cipitio",
+    name: l("El Cipitío", "El Cipitío"),
+    category: l("Popular folklore", "Folclore popular"),
+    summary: l(
+      "A mischievous character from Salvadoran oral tradition.",
+      "Un personaje travieso de la tradición oral salvadoreña."
+    ),
+    details: l(
+      "Often described as a small boy with a large hat and backward-facing feet, El Cipitío is known for playing tricks and appearing near rivers and rural paths. His stories are passed down through generations, with variations from one community to another.",
+      "Descrito frecuentemente como un niño pequeño con un gran sombrero y los pies al revés, El Cipitío es conocido por hacer travesuras y aparecer cerca de ríos y caminos rurales. Sus historias se transmiten entre generaciones y varían según la comunidad."
+    ),
+    accent: "terra",
+  },
+  {
+    id: "siguanaba",
+    name: l("La Siguanaba", "La Siguanaba"),
+    category: l("Legends", "Leyendas"),
+    summary: l(
+      "A mysterious figure said to appear near rivers and lonely roads.",
+      "Una figura misteriosa que, según la leyenda, aparece cerca de ríos y caminos solitarios."
+    ),
+    details: l(
+      "In Salvadoran folklore, La Siguanaba is often described as a beautiful woman who transforms into a frightening apparition. Her legend has been used to warn people about deception, danger and wandering alone at night.",
+      "En el folclore salvadoreño, La Siguanaba suele describirse como una mujer hermosa que se transforma en una aparición aterradora. Su leyenda se ha utilizado para advertir sobre el engaño, los peligros y el caminar a solas durante la noche."
+    ),
+    accent: "charcoal",
+  },
+  {
+    id: "cadejo",
+    name: l("El Cadejo", "El Cadejo"),
+    category: l("Legends", "Leyendas"),
+    summary: l(
+      "A supernatural dog from Central American folklore.",
+      "Un perro sobrenatural presente en el folclore centroamericano."
+    ),
+    details: l(
+      "The best-known versions tell of a white Cadejo that protects travelers and a black Cadejo associated with danger. Stories vary across Central America, making this legend part of a shared regional imagination.",
+      "Las versiones más conocidas hablan de un Cadejo blanco que protege a los viajeros y uno negro asociado con el peligro. Las historias varían por Centroamérica y forman parte de un imaginario regional compartido."
+    ),
+    accent: "copper",
+  },
+],
   dishesTitle: l("What to eat", "Qué comer"),
   dishes: [
     {
